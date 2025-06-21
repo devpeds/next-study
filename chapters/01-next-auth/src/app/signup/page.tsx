@@ -1,7 +1,7 @@
 import FormField from "@/components/form-field";
 import db from "@/db";
 import { getCsrfToken } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { redirect, RedirectType } from "next/navigation";
 
 enum Errors {
   RequiredFieldMissing = "RequiredFieldMissing",
@@ -9,11 +9,12 @@ enum Errors {
 }
 
 const errorMessages: Record<string, string> = {
+  default: "Unable to Sign up",
   [Errors.RequiredFieldMissing]: "Some of required fields are missing",
-  [Errors.UserExists]: "given email is already registered",
+  [Errors.UserExists]: "given email is already signed up",
 };
 
-export default async function Register(
+export default async function SignUp(
   props: PageQueryParams<{ error?: string; callbackUrl?: string }>
 ) {
   const { error, callbackUrl } = await props.searchParams;
@@ -23,7 +24,7 @@ export default async function Register(
   return (
     <div className="flex-1 flex flex-col items-center justify-center px-5">
       <form
-        className="flex flex-col items-center space-y-8 bg-gray-700 p-12 max-w-3xl w-full rounded-xl"
+        className="flex flex-col items-center space-y-5 bg-gray-700 p-12 max-w-lg w-full rounded-xl"
         action={async (data) => {
           "use server";
           if (csrf !== data.get("csrfToken")) {
@@ -38,17 +39,17 @@ export default async function Register(
 
           if (!name || !email || !password) {
             const error = `error=${Errors.RequiredFieldMissing}`;
-            search = (search ?? "") + (search ? "&" : "") + error;
-            return redirect(`/register${search}`);
+            search = (search ?? "") + (search ? "&" : "?") + error;
+            return redirect(`/signup${search}`, RedirectType.replace);
           }
 
           if (db.getUserByEmail(email)) {
             const error = `error=${Errors.UserExists}`;
-            search = (search ?? "") + (search ? "&" : "") + error;
-            return redirect(`/register${search}`);
+            search = (search ?? "") + (search ? "&" : "?") + error;
+            return redirect(`/signup${search}`, RedirectType.replace);
           }
 
-          const newUser = db.createUser({
+          db.createUser({
             name,
             email,
             emailVerified: new Date(),
@@ -61,27 +62,27 @@ export default async function Register(
         <div className="w-full">
           {error && (
             <div className="bg-red-200 text-red-800 p-4 rounded-md">
-              {errorMessages[error]}
+              {errorMessages[error] ?? errorMessages.default}
             </div>
           )}
         </div>
         <input hidden readOnly name="csrfToken" value={csrf} />
         <FormField
-          id="register-form-name"
+          id="signup-form-name"
           required
           name="name"
           label="Name"
           placeholder="Name"
         />
         <FormField
-          id="register-form-email"
+          id="signup-form-email"
           required
           name="email"
           label="Email"
           placeholder="Email"
         />
         <FormField
-          id="register-form-password"
+          id="signup-form-password"
           required
           name="password"
           label="Password"
@@ -89,7 +90,7 @@ export default async function Register(
           type="password"
         />
         <button
-          className="cursor-pointer mt-10 w-full bg-green-700 p-4 rounded-md font-bold text-lg"
+          className="cursor-pointer mt-5 w-full bg-green-700 px-4 py-3 rounded-md font-bold text-lg"
           type="submit"
         >
           Submit

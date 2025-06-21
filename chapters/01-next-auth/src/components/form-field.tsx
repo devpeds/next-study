@@ -13,7 +13,8 @@ function FormField({ label, id, ...props }: Props) {
       </label>
       <input
         id={id}
-        className="border rounded-md px-3 py-4 text-lg"
+        className="border rounded-md px-4 py-3 text-md"
+        autoComplete="on"
         {...props}
       />
     </div>
