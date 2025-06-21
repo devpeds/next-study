@@ -3,7 +3,7 @@ import NextAuth, { AuthOptions } from "next-auth";
 
 export const authOptions: AuthOptions = {
   // debug: process.env.NODE_ENV === "development",
-  ...baseAuthOptions["jwt"],
+  ...baseAuthOptions["database"],
   pages: {
     // signIn: "/login",
   },
