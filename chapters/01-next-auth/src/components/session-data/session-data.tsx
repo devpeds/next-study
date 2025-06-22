@@ -1,5 +1,3 @@
-import { Session } from "next-auth";
-
 type Props = {
   title: string;
   apiName: string;

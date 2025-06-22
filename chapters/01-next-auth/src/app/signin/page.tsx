@@ -2,7 +2,6 @@ import authOptions from "@/auth/options";
 import OAuthButton from "@/components/oauth-button";
 import SignInForm from "@/components/signin-form";
 import { getCsrfToken } from "next-auth/react";
-import Link from "next/link";
 import { Fragment } from "react";
 
 type ProviderType = (typeof authOptions)["providers"][number]["type"];
