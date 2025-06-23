@@ -23,7 +23,7 @@ pnpm start # run server in production mode (http://localhost:3000)
 
 ### Before Started
 
-로그인 기능을 사용하려면 `.env.local`에 아래 내용 추가 필요
+로그인 기능을 사용하려면 `.env.local`에 아래 내용 추가 필요 ([.env.local.example](./.env.local.example) 참고)
 
 ```bash
 # .env.local
@@ -34,6 +34,11 @@ AUTH_SECRET=your-secret-here # CLI에서 `npx auth secret` or `openssl rand -hex
 # https://authjs.dev/guides/configuring-github
 AUTH_GITHUB_ID=github-client-id-here
 AUTH_GITHUB_SECRET=github-client-secret-here
+
+# For Email authentication
+# https://next-auth.js.org/providers/email#smtp
+EMAIL_SERVER=smtp-server-here
+EMAIL_FROM=sender-email-here
 ```
 
 ## NextAuth?
@@ -96,7 +101,8 @@ sequenceDiagram
 
 각 인증 방식에 따른 인증 플로우는 아래와 같다.
 
-#### 1. OAuth
+<details>
+<summary>OAuth</summary>
 
 ```mermaid
 sequenceDiagram
@@ -121,11 +127,37 @@ sequenceDiagram
   B ->> -A: signed-in!
 ```
 
-#### 2. Email
+</details>
 
-TBD
+<details>
+<summary>Email</summary>
 
-#### 3. Credentials
+```mermaid
+sequenceDiagram
+  actor A as User
+  participant B as Browser
+  participant C as App<br>(next.js)
+
+  A ->> B: sign in with email
+
+  B ->>+ C: POST api/auth/signin/email
+  C ->> C: create<br>verification token
+  C ->>+ A: send email with magic link (via STMP)
+  C -->> B: 200 OK
+  B -->> C: GET api/auth/verify-request
+  C ->>- B: redirect to "Check your email" page
+
+  A ->>- B: click magic link
+  B ->> +C: GET api/auth/callback/email
+  C ->> C: verify token
+  Note left of C: Generate & store<br>session
+  C ->> -B: signed-in!
+```
+
+</details>
+
+<details>
+<summary>Credentials</summary>
 
 ```mermaid
 sequenceDiagram
@@ -138,6 +170,8 @@ sequenceDiagram
   Note left of B: Generate & store<br>session
   B ->> -A: signed-in!
 ```
+
+</details>
 
 ## 실전 적용 가이드
 

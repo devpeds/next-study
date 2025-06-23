@@ -1,12 +1,15 @@
 import authOptions from "@/auth/options";
 import OAuthButton from "@/components/oauth-button";
-import SignInForm from "@/components/signin-form";
+import {
+  CredentialsSignInForm,
+  EmailSignInForm,
+} from "@/components/signin-form";
 import { getCsrfToken } from "next-auth/react";
 import { Fragment } from "react";
 
 type ProviderType = (typeof authOptions)["providers"][number]["type"];
 
-const providerTypes: ProviderType[] = ["oauth", "credentials"];
+const providerTypes: ProviderType[] = ["oauth", "email", "credentials"];
 
 const errorMessages: Record<string, string> = {
   default: "Unable to sign in.",
@@ -55,8 +58,15 @@ export default async function SignIn({
                   callbackUrl={callbackUrl}
                 />
               )}
+              {provider.type === "email" && (
+                <EmailSignInForm
+                  className="flex flex-col items-center w-full space-y-5"
+                  csrfToken={csrfToken ?? ""}
+                  callbackUrl={callbackUrl}
+                />
+              )}
               {provider.type === "credentials" && (
-                <SignInForm
+                <CredentialsSignInForm
                   className="flex flex-col items-center w-full space-y-5"
                   csrfToken={csrfToken ?? ""}
                   credentials={Object.entries(provider.credentials)}

@@ -54,13 +54,11 @@ const db = (() => {
     },
     // accounts
     upsertAccount: (account: AdapterAccount) => {
-      console.log("account created", account);
       accounts.set(`${account.provider}_${account.providerAccountId}`, account);
     },
     // sessions
     createSession: (session: AdapterSession) => {
       sessions.set(session.sessionToken, session);
-      console.log("session created", session.sessionToken);
       return session;
     },
     getSession: (token: string) => {
@@ -76,7 +74,6 @@ const db = (() => {
     deleteSession: (token: string) => {
       const session = sessions.get(token)!;
       sessions.delete(token);
-      console.log("session deleted", token);
       return session;
     },
     // verification tokens

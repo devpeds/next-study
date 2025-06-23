@@ -4,15 +4,21 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import FormField from "./form-field";
 import { CredentialInput } from "next-auth/providers/credentials";
+import SubmitButton from "./submit-button";
 
-type Props = {
+type CredentialsSignInFormProps = {
   className?: string;
   csrfToken: string;
   credentials: [string, CredentialInput][];
   callbackUrl?: string;
 };
 
-function SignInForm({ className, csrfToken, credentials, callbackUrl }: Props) {
+export function CredentialsSignInForm({
+  className,
+  csrfToken,
+  credentials,
+  callbackUrl,
+}: CredentialsSignInFormProps) {
   return (
     <form
       className={className}
@@ -27,7 +33,7 @@ function SignInForm({ className, csrfToken, credentials, callbackUrl }: Props) {
         });
       }}
     >
-      <input hidden name="csrfToken" defaultValue={csrfToken} />
+      <input name="csrfToken" type="hidden" readOnly value={csrfToken} />
       {credentials.map(([name, credential]) => (
         <FormField
           key={name}
@@ -39,12 +45,7 @@ function SignInForm({ className, csrfToken, credentials, callbackUrl }: Props) {
           placeholder={credential.placeholder}
         />
       ))}
-      <button
-        className="cursor-pointer mt-5 w-full bg-green-700 py-3 px-4 rounded-md font-bold text-xl"
-        type="submit"
-      >
-        Sign in
-      </button>
+      <SubmitButton formType="credentials">Sign in</SubmitButton>
       <Link
         className="underline text-blue-300"
         href={"/signup?" + (callbackUrl ?? "")}
@@ -55,4 +56,39 @@ function SignInForm({ className, csrfToken, credentials, callbackUrl }: Props) {
   );
 }
 
-export default SignInForm;
+type EmailSignInFormProps = {
+  className?: string;
+  csrfToken: string;
+  callbackUrl?: string;
+};
+
+export function EmailSignInForm({
+  className,
+  csrfToken,
+  callbackUrl,
+}: EmailSignInFormProps) {
+  return (
+    <form
+      className={className}
+      onSubmit={(event) => {
+        event.preventDefault();
+
+        const target = event.target as HTMLFormElement;
+        const formData = new FormData(target);
+        signIn("email", {
+          ...Object.fromEntries(formData.entries()),
+          callbackUrl,
+        });
+      }}
+    >
+      <input name="csrfToken" type="hidden" readOnly value={csrfToken} />
+      <FormField
+        id="email-id-email"
+        name="email"
+        label="Email"
+        placeholder="example@example.com"
+      />
+      <SubmitButton formType="email">Sign in with Email</SubmitButton>
+    </form>
+  );
+}

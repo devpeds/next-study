@@ -4,6 +4,7 @@ import Github from "next-auth/providers/github";
 import Credentials from "next-auth/providers/credentials";
 import { cookies } from "next/headers";
 import { randomUUID } from "crypto";
+import Email from "next-auth/providers/email";
 
 const COOKIE_SESSION_TOKEN = "next-auth.session-token";
 
@@ -23,10 +24,19 @@ const sharedAuthOptions: AuthOptions = {
       clientId: process.env.AUTH_GITHUB_ID,
       clientSecret: process.env.AUTH_GITHUB_SECRET,
     }),
+    // Email Provider
+    Email({
+      server: process.env.EMAIL_SERVER,
+      from: process.env.EMAIL_FROM,
+    }),
     // Credentials Provider
     Credentials({
       credentials: {
-        email: { label: "Email", type: "text", placeholder: "Email" },
+        email: {
+          label: "Email",
+          type: "text",
+          placeholder: "example@example.com",
+        },
         password: {
           label: "Password",
           type: "password",

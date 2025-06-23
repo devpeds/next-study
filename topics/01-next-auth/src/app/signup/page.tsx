@@ -1,4 +1,5 @@
 import FormField from "@/components/form-field";
+import SubmitButton from "@/components/submit-button";
 import db from "@/db";
 import { getCsrfToken } from "next-auth/react";
 import { redirect, RedirectType } from "next/navigation";
@@ -89,12 +90,7 @@ export default async function SignUp(
           placeholder="Password"
           type="password"
         />
-        <button
-          className="cursor-pointer mt-5 w-full bg-green-700 px-4 py-3 rounded-md font-bold text-lg"
-          type="submit"
-        >
-          Submit
-        </button>
+        <SubmitButton formType="credentials">Submit</SubmitButton>
       </form>
     </div>
   );
