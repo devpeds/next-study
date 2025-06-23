@@ -1,4 +1,4 @@
-# Chapter 1. NextAuth
+# [Topic 01] NextAuth
 
 `next-auth`를 활용한 로그인 구현 샘플
 
