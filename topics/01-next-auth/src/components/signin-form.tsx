@@ -5,13 +5,49 @@ import Link from "next/link";
 import FormField from "./form-field";
 import { CredentialInput } from "next-auth/providers/credentials";
 import SubmitButton from "./submit-button";
+import { FormEvent } from "react";
+import { RedirectableProviderType } from "next-auth/providers/index";
 
-type CredentialsSignInFormProps = {
+type Props = {
   className?: string;
   csrfToken: string;
-  credentials: [string, CredentialInput][];
   callbackUrl?: string;
 };
+
+type CredentialsSignInFormProps = Props & {
+  credentials: [string, CredentialInput][];
+};
+
+function handleSubmit(
+  providerType: RedirectableProviderType,
+  callbackUrl?: string
+) {
+  return (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const target = event.target as HTMLFormElement;
+    const formData = new FormData(target);
+    signIn(providerType, {
+      ...Object.fromEntries(formData.entries()),
+      callbackUrl,
+    });
+  };
+}
+
+export function EmailSignInForm({ className, csrfToken, callbackUrl }: Props) {
+  return (
+    <form className={className} onSubmit={handleSubmit("email", callbackUrl)}>
+      <input name="csrfToken" type="hidden" readOnly value={csrfToken} />
+      <FormField
+        id="email-id-email"
+        name="email"
+        label="Email"
+        placeholder="example@example.com"
+      />
+      <SubmitButton formType="email">Sign in with Email</SubmitButton>
+    </form>
+  );
+}
 
 export function CredentialsSignInForm({
   className,
@@ -22,16 +58,7 @@ export function CredentialsSignInForm({
   return (
     <form
       className={className}
-      onSubmit={(event) => {
-        event.preventDefault();
-
-        const target = event.target as HTMLFormElement;
-        const formData = new FormData(target);
-        signIn("credentials", {
-          ...Object.fromEntries(formData.entries()),
-          callbackUrl,
-        });
-      }}
+      onSubmit={handleSubmit("credentials", callbackUrl)}
     >
       <input name="csrfToken" type="hidden" readOnly value={csrfToken} />
       {credentials.map(([name, credential]) => (
@@ -52,43 +79,6 @@ export function CredentialsSignInForm({
       >
         no account?
       </Link>
-    </form>
-  );
-}
-
-type EmailSignInFormProps = {
-  className?: string;
-  csrfToken: string;
-  callbackUrl?: string;
-};
-
-export function EmailSignInForm({
-  className,
-  csrfToken,
-  callbackUrl,
-}: EmailSignInFormProps) {
-  return (
-    <form
-      className={className}
-      onSubmit={(event) => {
-        event.preventDefault();
-
-        const target = event.target as HTMLFormElement;
-        const formData = new FormData(target);
-        signIn("email", {
-          ...Object.fromEntries(formData.entries()),
-          callbackUrl,
-        });
-      }}
-    >
-      <input name="csrfToken" type="hidden" readOnly value={csrfToken} />
-      <FormField
-        id="email-id-email"
-        name="email"
-        label="Email"
-        placeholder="example@example.com"
-      />
-      <SubmitButton formType="email">Sign in with Email</SubmitButton>
     </form>
   );
 }
