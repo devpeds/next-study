@@ -4,7 +4,6 @@ import {
   CredentialsSignInForm,
   EmailSignInForm,
 } from "@/components/signin-form";
-import { getCsrfToken } from "next-auth/react";
 import { Fragment } from "react";
 
 type ProviderType = (typeof authOptions)["providers"][number]["type"];
@@ -27,10 +26,7 @@ const errorMessages: Record<string, string> = {
 export default async function SignIn({
   searchParams,
 }: PageQueryParams<{ callbackUrl?: string; error?: string }>) {
-  const [{ callbackUrl, error }, csrfToken] = await Promise.all([
-    await searchParams,
-    getCsrfToken(),
-  ]);
+  const { callbackUrl, error } = await searchParams;
 
   const providers = authOptions.providers.sort((lhs, rhs) => {
     return providerTypes.indexOf(lhs.type) - providerTypes.indexOf(rhs.type);
@@ -61,14 +57,12 @@ export default async function SignIn({
               {provider.type === "email" && (
                 <EmailSignInForm
                   className="flex flex-col items-center w-full space-y-5"
-                  csrfToken={csrfToken ?? ""}
                   callbackUrl={callbackUrl}
                 />
               )}
               {provider.type === "credentials" && (
                 <CredentialsSignInForm
                   className="flex flex-col items-center w-full space-y-5"
-                  csrfToken={csrfToken ?? ""}
                   credentials={Object.entries(provider.credentials)}
                   callbackUrl={callbackUrl}
                 />

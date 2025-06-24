@@ -10,7 +10,6 @@ import { RedirectableProviderType } from "next-auth/providers/index";
 
 type Props = {
   className?: string;
-  csrfToken: string;
   callbackUrl?: string;
 };
 
@@ -34,10 +33,9 @@ function handleSubmit(
   };
 }
 
-export function EmailSignInForm({ className, csrfToken, callbackUrl }: Props) {
+export function EmailSignInForm({ className, callbackUrl }: Props) {
   return (
     <form className={className} onSubmit={handleSubmit("email", callbackUrl)}>
-      <input name="csrfToken" type="hidden" readOnly value={csrfToken} />
       <FormField
         id="email-id-email"
         name="email"
@@ -51,7 +49,6 @@ export function EmailSignInForm({ className, csrfToken, callbackUrl }: Props) {
 
 export function CredentialsSignInForm({
   className,
-  csrfToken,
   credentials,
   callbackUrl,
 }: CredentialsSignInFormProps) {
@@ -60,7 +57,6 @@ export function CredentialsSignInForm({
       className={className}
       onSubmit={handleSubmit("credentials", callbackUrl)}
     >
-      <input name="csrfToken" type="hidden" readOnly value={csrfToken} />
       {credentials.map(([name, credential]) => (
         <FormField
           key={name}

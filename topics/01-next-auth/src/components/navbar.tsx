@@ -1,10 +1,12 @@
 import Link from "next/link";
 import AuthButton from "./auth-button";
-import DropdownMenu from "./dropdown-menu";
 
-type Menu = { name: string; children: { name: string; href: string }[] };
+type Menu = {
+  name: string;
+  href: string;
+};
 
-const menus: Menu[] = [];
+const menus: Menu[] = [{ name: "Menu1", href: "dynamic" }];
 
 function NavBar() {
   return (
@@ -16,17 +18,12 @@ function NavBar() {
         <ul className="flex space-x-2">
           {menus.map((menu) => (
             <li key={menu.name}>
-              <DropdownMenu label={menu.name}>
-                {menu.children.map((child) => (
-                  <Link
-                    key={child.name}
-                    className="p-2 font-bold hover:text-primary-400 focus:text-primary-400"
-                    href={child.href}
-                  >
-                    {child.name}
-                  </Link>
-                ))}
-              </DropdownMenu>
+              <Link
+                className="p-2 font-bold hover:text-primary-400 focus:text-primary-400"
+                href={menu.href}
+              >
+                {menu.name}
+              </Link>
             </li>
           ))}
         </ul>

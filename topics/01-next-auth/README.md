@@ -78,6 +78,10 @@ NextAuth가 사용자 인증을 처리할 수 있도록 인증 수단을 설정�
 - `jwt`: 세션 정보를 JWT로 인코딩하고 세션 쿠키(`next-auth.session-token`)에 저장해 서버 상태 없이 관리 (stateless)
 - `database`: 세션 정보를 데이터베이스에 저장하고 세션 쿠키에 세션 ID만 담아 서버 상태 기반으로 관리 (stateful)
 
+#### CSRF 토큰
+
+next-auth는 세션 정보를 쿠키에 저장하기 때문에 CSRF(Cross-Site Request Forgery, 사이트 간 요청 위조) 공격에 취약할 수 있다. 이에 대한 방어책으로 next-auth는 별도의 토큰을 쿠키에 저장하고 로그인/로그아웃과 같은 POST 요청시 페이로드에 포함된 토큰과 비교해 유효성을 검증한다. 이러한 방식을 **Double-Submit Cookie 패턴**이라 하며, 이때 사용하는 토큰을 **CSRF 토큰**이라고 한다.
+
 ### 인증 플로우
 
 next-auth는 모든 인증 방식에서 공통적으로 아래의 플로우를 따른다.
