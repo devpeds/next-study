@@ -1,6 +1,6 @@
 # 커스텀 로그인 페이지
 
-next-auth는 기본적으로 [빌트인 로그인 페이지](https://github.com/nextauthjs/next-auth/blob/v4/packages/next-auth/src/core/pages/signin.tsx)를 제공한다. `theme` 옵션을 통해 페이지를 어느 정도 커스터마이징 할 수 있지만, 전체적인 UI나 레이아웃을 변경하려면 로그인 페이지를 따로 만들어야 한다. 메타 태그 수정이나 i18n 적용 역시 어렵기 때문에 실무에서는 내부용 사이트가 아닌 이상 커스텀 로그인 페이지를 만들지 않을까 생각한다.
+NextAuth는 기본적으로 [빌트인 로그인 페이지](https://github.com/nextauthjs/next-auth/blob/v4/packages/next-auth/src/core/pages/signin.tsx)를 제공한다. `theme` 옵션을 통해 페이지를 어느 정도 커스터마이징 할 수 있지만, 전체적인 UI나 레이아웃을 변경하려면 로그인 페이지를 따로 만들어야 한다. 메타 태그 수정이나 i18n 적용 역시 어렵기 때문에 실무에서는 내부용 사이트가 아닌 이상 커스텀 로그인 페이지를 만들지 않을까 생각한다.
 
 커스텀 페이지를 만들면 아래와 같이 `pages.signIn` 옵션에 만들어둔 로그인 페이지의 경로를 연결하면 `GET api/auth/login` 요청시 커스텀 로그인 페이지로 리다이렉트 된다.
 
@@ -18,7 +18,7 @@ const handler = NextAuth({
 export default { handler as GET, handler as POST };
 ```
 
-next-auth에 연결하지 않으면 커스텀 페이지와 빌트인 페이지가 두 개 존재하게 된다. 이 경우 개발자의 의도와 달리 사용자는 기본 페이지로 리디렉션될 수 있어 사용자 경험 측면에서 바람직하지 않다. 따라서 되도록 커스텀 페이지를 연결하는 것을 추천한다.
+NextAuth에 연결하지 않으면 커스텀 페이지와 빌트인 페이지가 두 개 존재하게 된다. 이 경우 개발자의 의도와 달리 사용자는 기본 페이지로 리디렉션될 수 있어 사용자 경험 측면에서 바람직하지 않다. 따라서 되도록 커스텀 페이지를 연결하는 것을 추천한다.
 
 ## RSC로 로그인 페이지 만들기
 
@@ -45,14 +45,14 @@ export default async function SignInPage() {
 ```
 
 1. 서버 컴포넌트에서 `getCsrfToken()`을 사용해 CSRF 토큰을 가져온다.
-2. 폼의 `action` 속성에는 next-auth가 제공하는 소셜 로그인 엔드포인트를 지정한다.
+2. 폼의 `action` 속성에는 NextAuth가 제공하는 소셜 로그인 엔드포인트를 지정한다.
 3. 가져온 토큰을 `<input>` 요소에 설정하여, 폼 제출 시 요청 본문에 포함되도록 한다.
 
 위 코드는 논리적으로 문제가 없는 것 처럼 보였지만, 실제 실행 했을때, 로그인이 되지 않고 로그인 페이지로 리디렉션 되는 현상이 발생했다.
 
 ### 원인파악
 
-원인을 파악하기 위해 next-auth의 소스 코드를 확인했다. next-auth의 전체적인 흐름은 다음과 같았다.
+원인을 파악하기 위해 NextAuth의 소스 코드를 확인했다. NextAuth의 전체적인 흐름은 다음과 같았다.
 
 1. `/api/auth`로 시작하는 모든 엔드포인트에 대한 요청이 들어오면 CSRF 토큰을 생성한다. ([코드](https://github.com/nextauthjs/next-auth/blob/v4/packages/next-auth/src/core/lib/csrf-token.ts))
    - 쿠키에 CSRF 토큰이 있다면, 쿠키에 있는 토큰을 사용하고 토큰에 대한 유효성(`isCsrfVerified`)도 같이 검증한다.

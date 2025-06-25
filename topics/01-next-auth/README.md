@@ -181,4 +181,3 @@ sequenceDiagram
 
 1. [커스텀 로그인 페이지](./docs/custom-signin-page.md)
 2. [`database` 세션 관리 기반 Credentials 인증](./docs/credentials-with-db.md)
-3. [백엔드 API 연동](./docs/intergation-with-backend-api.md)

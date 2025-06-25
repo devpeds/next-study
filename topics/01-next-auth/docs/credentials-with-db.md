@@ -39,7 +39,7 @@ const handler = NextAuth({
 export default { handler as GET, handler as POST };
 ```
 
-1. Adapter를 준비한다. next-auth에서는 Prisma, Firebase, DynamoDB 등 다양한 빌트인 어댑터를 제공한다. 필자의 경우 간단한 인메모리 데이터베이스([코드](../src/db.ts))를 만들고 커스텀 어댑터([코드](../src/auth/adapter.ts))를 구현해서 사용했다.
+1. Adapter를 준비한다. NextAuth에서는 Prisma, Firebase, DynamoDB 등 다양한 빌트인 어댑터를 제공한다. 필자의 경우 간단한 인메모리 데이터베이스([코드](../src/db.ts))를 만들고 커스텀 어댑터([코드](../src/auth/adapter.ts))를 구현해서 사용했다.
 2. 준비한 어탭터를 NextAuth 설정에 추가하고, `session.strategy`를 `database`로 설정한다. 어댑터를 추가하지 않은 채 `database`로 설정할 경우 오류가 발생한다.
 3. `providers`에 Credentials Provider를 아래 인자를 넘겨주며 추가한다.
    - `credentials`: 인증에 사용할 필드를 정의하며, 각각 `<input>` 요소의 속성을 설정한다.
