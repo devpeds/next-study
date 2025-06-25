@@ -71,11 +71,11 @@ export const databaseAuthOptions: AuthOptions = {
     ...sessionOptions,
   },
   // NOTE: For credentials sign-in
-  // https://nneko.branche.online/next-auth-credentials-provider-with-the-database-session-strategy
+  // https://github.com/devpeds/next-study/blob/main/topics/01-next-auth/docs/credentials-with-db.md
   callbacks: {
-    signIn: async ({ user: { id: userId }, credentials }) => {
+    jwt: async ({ token, user: { id: userId }, account }) => {
       // If credentials sign in, create session token
-      if (credentials) {
+      if (account?.type === "credentials") {
         const sessionToken = await sessionOptions.generateSessionToken();
         const expires = new Date(Date.now() + sessionOptions.maxAge * 1000);
 
@@ -84,8 +84,7 @@ export const databaseAuthOptions: AuthOptions = {
           expires,
         });
       }
-
-      return true;
+      return token;
     },
   },
   jwt: {
