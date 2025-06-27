@@ -6,7 +6,7 @@ type Menu = {
   href: string;
 };
 
-const menus: Menu[] = [{ name: "Menu1", href: "dynamic" }];
+const menus: Menu[] = [{ name: "Show DB", href: "db" }];
 
 function NavBar() {
   return (

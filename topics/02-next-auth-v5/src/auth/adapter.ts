@@ -1,41 +1,52 @@
-import db from "@/db";
+import inMemoryDB from "@/db/in-memory";
+import { prisma as prismaClient } from "@/db/prisma";
+import { PrismaAdapter } from "@auth/prisma-adapter";
 import { Adapter } from "next-auth/adapters";
 
-const CustomAdapter = (): Adapter => ({
+const InMemoryAdapter = (): Adapter => ({
   // required methods for all sign-in flows
-  createUser: db.createUser,
-  getUser: db.getUser,
-  getUserByEmail: db.getUserByEmail,
-  getUserByAccount: db.getUserByAccount,
-  updateUser: db.updateUser,
-  linkAccount: db.upsertAccount,
-  unlinkAccount: db.deleteAccount,
-  createSession: db.createSession,
-  updateSession: db.updateSession,
-  deleteSession: db.deleteSession,
+  createUser: inMemoryDB.createUser,
+  getUser: inMemoryDB.getUser,
+  getUserByEmail: inMemoryDB.getUserByEmail,
+  getUserByAccount: inMemoryDB.getUserByAccount,
+  updateUser: inMemoryDB.updateUser,
+  linkAccount: inMemoryDB.upsertAccount,
+  unlinkAccount: inMemoryDB.deleteAccount,
+  createSession: inMemoryDB.createSession,
+  updateSession: inMemoryDB.updateSession,
+  deleteSession: inMemoryDB.deleteSession,
   getSessionAndUser: (token) => {
-    const session = db.getSession(token);
+    const session = inMemoryDB.getSession(token);
     if (!session) {
       return null;
     }
 
-    const user = db.getUser(session.userId);
+    const user = inMemoryDB.getUser(session.userId);
     if (!user) {
       return null;
     }
     return { session, user };
   },
   // required methods for email sign-in
-  createVerificationToken: db.createVerificationToken,
-  useVerificationToken: db.getVerificationToken,
+  createVerificationToken: inMemoryDB.createVerificationToken,
+  useVerificationToken: inMemoryDB.getVerificationToken,
   // for WebAuthn
-  getAccount: db.getAccount,
-  createAuthenticator: db.createAuthenticator,
-  getAuthenticator: db.getAuthenticator,
+  getAccount: inMemoryDB.getAccount,
+  createAuthenticator: inMemoryDB.createAuthenticator,
+  getAuthenticator: inMemoryDB.getAuthenticator,
   updateAuthenticatorCounter: (credentialID, counter) => {
-    return db.updateAuthenticator({ credentialID, counter });
+    return inMemoryDB.updateAuthenticator({ credentialID, counter });
   },
-  listAuthenticatorsByUserId: db.getAuthenticatorsByUserId,
+  listAuthenticatorsByUserId: inMemoryDB.getAuthenticatorsByUserId,
 });
 
-export default CustomAdapter;
+function createAdapter(dbType: typeof process.env.ADAPTER_TYPE = "prisma") {
+  switch (dbType) {
+    case "in-memory":
+      return InMemoryAdapter();
+    case "prisma":
+      return PrismaAdapter(prismaClient);
+  }
+}
+
+export default createAdapter;

@@ -14,7 +14,7 @@ Auth.js를 활용한 로그인 구현 샘플
 ```bash
 pnpm install
 
-pnpm db:migrate # migrate database. `DATABASE_URL` must be exists.
+pnpm prisma:migrate # migrate database. `DATABASE_URL` must be specified.
 
 pnpm dev # run server in development mode (http://localhost:3000)
 
@@ -44,6 +44,7 @@ EMAIL_FROM=sender-email-here
 
 # For DB(Prisma) & adapter configuration
 DATABASE_URL=database-url-here
+ADAPTER_TYPE=prisma-or-in-memory # default: prisma
 ```
 
 ## Auth.js

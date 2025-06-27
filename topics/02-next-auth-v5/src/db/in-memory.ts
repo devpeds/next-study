@@ -7,7 +7,7 @@ import {
   VerificationToken,
 } from "next-auth/adapters";
 
-const db = (() => {
+const inMemoryDB = (() => {
   const users = new Map<string, AdapterUser>();
   const accounts = new Map<string, AdapterAccount>();
   const sessions = new Map<string, AdapterSession>();
@@ -16,7 +16,14 @@ const db = (() => {
 
   return {
     all: () => {
-      return { users, accounts, sessions, verificationTokens, authenticators };
+      const entries = Object.entries({
+        users,
+        accounts,
+        sessions,
+        verificationTokens,
+        authenticators,
+      }).map(([key, obj]) => [key, Array.from(obj.values() as any)]);
+      return Object.fromEntries(entries);
     },
     // users
     createUser: (user: Omit<AdapterUser, "id"> & { id?: string | null }) => {
@@ -133,4 +140,4 @@ const db = (() => {
   };
 })();
 
-export default db;
+export default inMemoryDB;
