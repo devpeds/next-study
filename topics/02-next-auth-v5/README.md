@@ -14,6 +14,8 @@ Auth.js를 활용한 로그인 구현 샘플
 ```bash
 pnpm install
 
+pnpm db:migrate # migrate database. `DATABASE_URL` must be exists.
+
 pnpm dev # run server in development mode (http://localhost:3000)
 
 # or
@@ -39,6 +41,9 @@ AUTH_GITHUB_SECRET=github-client-secret-here
 # https://authjs.dev/getting-started/providers/nodemailer#configuration
 EMAIL_SERVER=smtp-server-here
 EMAIL_FROM=sender-email-here
+
+# For DB(Prisma) & adapter configuration
+DATABASE_URL=database-url-here
 ```
 
 ## Auth.js

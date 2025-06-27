@@ -1,18 +1,12 @@
+import { signUp, SignUpError } from "@/auth";
 import FormField from "@/components/form-field";
 import SubmitButton from "@/components/submit-button";
-import db from "@/db";
-import { randomUUID } from "crypto";
-import { redirect, RedirectType } from "next/navigation";
-
-enum Errors {
-  RequiredFieldMissing = "RequiredFieldMissing",
-  UserExists = "UserExists",
-}
+import { permanentRedirect, redirect, RedirectType } from "next/navigation";
 
 const errorMessages: Record<string, string> = {
   default: "Unable to Sign up",
-  [Errors.RequiredFieldMissing]: "Some of required fields are missing",
-  [Errors.UserExists]: "given email is already signed up",
+  [SignUpError.types[0]]: "Some of required fields are missing",
+  [SignUpError.types[1]]: "given email is already signed up",
 };
 
 export default async function SignUp(
@@ -26,31 +20,30 @@ export default async function SignUp(
         className="flex flex-col items-center space-y-5 bg-gray-100 dark:bg-gray-700 p-12 max-w-lg w-full rounded-xl"
         action={async (data) => {
           "use server";
-          let search = (callbackUrl && `?callbackUrl=${callbackUrl}`) ?? "";
-
-          const name = data.get("name") as string | null;
-          const email = data.get("email") as string | null;
-          const password = data.get("password") as string | null;
-
-          if (!name || !email || !password) {
-            const error = `error=${Errors.RequiredFieldMissing}`;
-            search = (search ?? "") + (search ? "&" : "?") + error;
-            return redirect(`/signup${search}`, RedirectType.replace);
+          const query = new URLSearchParams();
+          if (callbackUrl) {
+            query.append("callbackUrl", callbackUrl);
           }
 
-          if (db.getUserByEmail(email)) {
-            const error = `error=${Errors.UserExists}`;
-            search = (search ?? "") + (search ? "&" : "?") + error;
-            return redirect(`/signup${search}`, RedirectType.replace);
-          }
+          try {
+            await signUp(
+              Object.fromEntries(Array.from(data) as [string, string][])
+            );
 
-          db.createUser({
-            name,
-            email,
-            emailVerified: new Date(),
-            password,
-          });
-          redirect("/api/auth/signin" + search);
+            /**
+             * There are an issue after redirecting custom sign-in page:
+             *
+             * - MissingCSRF error is thrown when signing in with server action
+             */
+            return redirect(`/api/auth/signin?${query}`);
+          } catch (error) {
+            if (error instanceof SignUpError) {
+              query.append("error", error.type);
+              return redirect(`/signup?${query}`);
+            }
+
+            throw error;
+          }
         }}
       >
         <h1 className="font-bold text-4xl">Sign Up</h1>

@@ -42,7 +42,7 @@ function WebAuthnSignInForm({
           // 설정 단에서 autocomplete 대신 autoComplete을 사용하면 Configuration Error가 발생해
           // 컴포넌트 단에서 autocomplete를 autoComplete로 변경
           autoComplete={autocomplete as string}
-          id={`credentials-${name}`}
+          id={`webauthn-${name}`}
           label={field.label ?? name}
           name={name}
         />

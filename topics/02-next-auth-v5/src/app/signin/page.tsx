@@ -65,7 +65,7 @@ export default async function SignIn({
                       <EmailSignInForm
                         className="flex flex-col items-center w-full space-y-5"
                         providerId={provider.id}
-                        callbackUrl={callbackUrl}
+                        redirectTo={callbackUrl}
                       />
                     );
                   case "credentials":
@@ -73,7 +73,7 @@ export default async function SignIn({
                       <CredentialsSignInForm
                         className="flex flex-col items-center w-full space-y-5"
                         formFields={Object.entries(provider.credentials)}
-                        callbackUrl={callbackUrl}
+                        redirectTo={callbackUrl}
                       />
                     );
                   case "webauthn":

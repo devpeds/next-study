@@ -1,3 +1,5 @@
+import { prisma } from "@/prisma";
+import { PrismaAdapter } from "@auth/prisma-adapter";
 import { randomUUID } from "crypto";
 import NextAuth, { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
@@ -5,11 +7,11 @@ import GitHub from "next-auth/providers/github";
 import Nodemailer from "next-auth/providers/nodemailer";
 import PassKey from "next-auth/providers/passkey";
 import { cookies } from "next/headers";
-import CustomAdapter from "./adapter";
+import createSignUp from "./signup";
 
 const COOKIE_SESSION_TOKEN = "authjs.session-token";
 
-const adapter = CustomAdapter();
+const adapter = PrismaAdapter(prisma);
 
 const session: Required<NextAuthConfig["session"]> = {
   strategy: "database",
@@ -94,3 +96,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
   }),
 });
+
+export const signUp = createSignUp(adapter);
+
+export { SignUpError } from "./signup";

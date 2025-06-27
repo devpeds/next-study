@@ -7,11 +7,10 @@ import { signIn } from "@/auth";
 import { redirect } from "next/navigation";
 import { AuthError } from "next-auth";
 import { HTMLProps } from "react";
-import WebAuthnSignInForm from "./webauthn";
 
 type Props = {
   className?: string;
-  callbackUrl?: string;
+  redirectTo?: string;
 };
 
 type EmailSignInFormProps = Props & {
@@ -33,7 +32,7 @@ function handleAction(providerId: ProviderId, redirectTo?: string) {
       await signIn(providerId, formData);
     } catch (error) {
       if (error instanceof AuthError) {
-        return redirect(`/signin?error=${error.type}`);
+        return redirect(`/api/auth/signin?error=${error.type}`);
       }
       throw error;
     }
@@ -43,10 +42,10 @@ function handleAction(providerId: ProviderId, redirectTo?: string) {
 export function EmailSignInForm({
   className,
   providerId,
-  callbackUrl,
+  redirectTo,
 }: EmailSignInFormProps) {
   return (
-    <form className={className} action={handleAction(providerId, callbackUrl)}>
+    <form className={className} action={handleAction(providerId, redirectTo)}>
       <FormField
         id="email-id-email"
         name="email"
@@ -61,12 +60,12 @@ export function EmailSignInForm({
 export function CredentialsSignInForm({
   className,
   formFields,
-  callbackUrl,
+  redirectTo,
 }: CredentialsSignInFormProps) {
   return (
     <form
       className={className}
-      action={handleAction("credentials", callbackUrl)}
+      action={handleAction("credentials", redirectTo)}
     >
       {formFields.map(([name, field]) => (
         <FormField
@@ -80,7 +79,7 @@ export function CredentialsSignInForm({
       <SubmitButton>Sign in</SubmitButton>
       <Link
         className="underline text-blue-500"
-        href={"/signup?" + (callbackUrl ?? "")}
+        href={"/signup?" + (redirectTo ?? "")}
       >
         no account?
       </Link>
