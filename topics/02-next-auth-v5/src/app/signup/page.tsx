@@ -23,7 +23,7 @@ export default async function SignUp(
   return (
     <div className="flex-1 flex flex-col items-center justify-center px-5">
       <form
-        className="flex flex-col items-center space-y-5 bg-gray-100 bg:bg-gray-700 p-12 max-w-lg w-full rounded-xl"
+        className="flex flex-col items-center space-y-5 bg-gray-100 dark:bg-gray-700 p-12 max-w-lg w-full rounded-xl"
         action={async (data) => {
           "use server";
           let search = (callbackUrl && `?callbackUrl=${callbackUrl}`) ?? "";
@@ -45,7 +45,6 @@ export default async function SignUp(
           }
 
           db.createUser({
-            id: randomUUID(),
             name,
             email,
             emailVerified: new Date(),
@@ -84,7 +83,7 @@ export default async function SignUp(
           placeholder="Password"
           type="password"
         />
-        <SubmitButton formType="credentials">Submit</SubmitButton>
+        <SubmitButton>Submit</SubmitButton>
       </form>
     </div>
   );

@@ -3,7 +3,8 @@ import OAuthButton from "@/components/oauth-button";
 import {
   CredentialsSignInForm,
   EmailSignInForm,
-} from "@/components/signin-form";
+} from "@/components/signin-form/server";
+import WebAuthnSignInForm from "@/components/signin-form/webauthn";
 import { Fragment } from "react";
 
 const errorMessages: Record<string, string> = {
@@ -23,9 +24,6 @@ export default async function SignIn({
   searchParams,
 }: PageQueryParams<{ callbackUrl?: string; error?: string }>) {
   const { callbackUrl, error } = await searchParams;
-  if (error) {
-    console.log(error);
-  }
 
   return (
     <div className="flex-1 flex flex-col items-center justify-center px-5">
@@ -43,6 +41,13 @@ export default async function SignIn({
             typeof provider === "function" ? provider() : provider;
           return (
             <Fragment key={providerData.id}>
+              {!!index && (
+                <div className="flex items-center w-full px-2 space-x-4">
+                  <hr className="flex-1 opacity-20" />
+                  <span className="text-sm">OR</span>
+                  <hr className="flex-1 opacity-20" />
+                </div>
+              )}
               {((provider) => {
                 switch (provider.type) {
                   case "oauth":
@@ -67,16 +72,22 @@ export default async function SignIn({
                     return (
                       <CredentialsSignInForm
                         className="flex flex-col items-center w-full space-y-5"
-                        credentials={Object.entries(provider.credentials)}
+                        formFields={Object.entries(provider.credentials)}
                         callbackUrl={callbackUrl}
                       />
                     );
-                  default:
-                    console.warn("unknown provider:", provider.type);
-                    return <></>;
+                  case "webauthn":
+                    return (
+                      <WebAuthnSignInForm
+                        className="flex flex-col items-center w-full space-y-5"
+                        providerId={provider.id}
+                        providerName={provider.name}
+                        formFields={Object.entries(provider.formFields)}
+                        redirectTo={callbackUrl}
+                      />
+                    );
                 }
               })(providerData)}
-              {!index && <span className="text-sm">OR</span>}
             </Fragment>
           );
         })}

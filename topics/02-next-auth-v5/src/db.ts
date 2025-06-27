@@ -1,5 +1,7 @@
+import { randomUUID } from "crypto";
 import {
   AdapterAccount,
+  AdapterAuthenticator,
   AdapterSession,
   AdapterUser,
   VerificationToken,
@@ -10,27 +12,19 @@ const db = (() => {
   const accounts = new Map<string, AdapterAccount>();
   const sessions = new Map<string, AdapterSession>();
   const verificationTokens = new Map<string, VerificationToken>();
-
-  users.set("0", {
-    id: "0",
-    email: "peds@sbtkyc.io",
-    emailVerified: new Date(),
-    password: "1234",
-  });
+  const authenticators = new Map<string, AdapterAuthenticator>();
 
   return {
     all: () => {
-      return {
-        users,
-        accounts,
-        sessions,
-        verificationTokens,
-      };
+      return { users, accounts, sessions, verificationTokens, authenticators };
     },
     // users
-    createUser: (user: AdapterUser) => {
-      users.set(user.id, user);
-      return user;
+    createUser: (user: Omit<AdapterUser, "id"> & { id?: string | null }) => {
+      // user id is empty when user created via passkey authentication
+      const userId = user.id || randomUUID();
+      const created = { ...user, id: userId };
+      users.set(userId, created);
+      return created;
     },
     getUser: (id: string) => {
       return users.get(id) ?? null;
@@ -65,6 +59,9 @@ const db = (() => {
     upsertAccount: (account: AdapterAccount) => {
       accounts.set(`${account.provider}_${account.providerAccountId}`, account);
       return account;
+    },
+    getAccount: (providerAccountId: string, provider: string) => {
+      return accounts.get(`${provider}_${providerAccountId}`) ?? null;
     },
     deleteAccount: ({
       provider,
@@ -106,6 +103,32 @@ const db = (() => {
       token,
     }: Pick<VerificationToken, "identifier" | "token">) => {
       return verificationTokens.get(`${identifier}_${token}`) ?? null;
+    },
+    // authenticator
+    createAuthenticator: (authenticator: AdapterAuthenticator) => {
+      authenticators.set(authenticator.credentialID, authenticator);
+      return authenticator;
+    },
+    getAuthenticator: (credentialId: string) => {
+      return authenticators.get(credentialId) ?? null;
+    },
+    getAuthenticatorsByUserId: (userId: string) => {
+      return Array.from(authenticators)
+        .filter(([, authenticator]) => authenticator.userId === userId)
+        .map(([_, authenticator]) => authenticator);
+    },
+    updateAuthenticator: (
+      authenticator: Partial<AdapterAuthenticator> & {
+        credentialID: AdapterAuthenticator["credentialID"];
+      }
+    ) => {
+      const updated = {
+        ...authenticators.get(authenticator.credentialID)!,
+        ...authenticator,
+      };
+      authenticators.set(authenticator.credentialID, updated);
+
+      return updated;
     },
   };
 })();

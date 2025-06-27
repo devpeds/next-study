@@ -1,10 +1,11 @@
+import { randomUUID } from "crypto";
 import NextAuth, { NextAuthConfig } from "next-auth";
+import Credentials from "next-auth/providers/credentials";
 import GitHub from "next-auth/providers/github";
 import Nodemailer from "next-auth/providers/nodemailer";
-import CustomAdapter from "./adapter";
-import Credentials from "next-auth/providers/credentials";
-import { randomUUID } from "crypto";
+import PassKey from "next-auth/providers/passkey";
 import { cookies } from "next/headers";
+import CustomAdapter from "./adapter";
 
 const COOKIE_SESSION_TOKEN = "authjs.session-token";
 
@@ -19,6 +20,16 @@ const session: Required<NextAuthConfig["session"]> = {
 
 export const providers: NextAuthConfig["providers"] = [
   GitHub,
+  PassKey({
+    formFields: {
+      email: {
+        label: "Email",
+        required: true,
+        autocomplete: "username webauthn",
+        placeholder: "example@example.com",
+      },
+    },
+  }),
   Nodemailer({
     server: process.env.EMAIL_SERVER,
     from: process.env.EMAIL_FROM,
@@ -55,6 +66,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: {
     signIn: "/signin",
   },
+  experimental: {
+    enableWebAuthn: true,
+  },
   ...(session.strategy === "database" && {
     callbacks: {
       jwt: async ({ token, user, account }) => {
@@ -74,6 +88,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     jwt: {
       encode: async () => {
+        console.log("jwt.encode");
         return (await cookies()).get(COOKIE_SESSION_TOKEN)?.value ?? "";
       },
     },

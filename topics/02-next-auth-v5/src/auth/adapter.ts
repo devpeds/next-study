@@ -28,6 +28,14 @@ const CustomAdapter = (): Adapter => ({
   // required methods for email sign-in
   createVerificationToken: db.createVerificationToken,
   useVerificationToken: db.getVerificationToken,
+  // for WebAuthn
+  getAccount: db.getAccount,
+  createAuthenticator: db.createAuthenticator,
+  getAuthenticator: db.getAuthenticator,
+  updateAuthenticatorCounter: (credentialID, counter) => {
+    return db.updateAuthenticator({ credentialID, counter });
+  },
+  listAuthenticatorsByUserId: db.getAuthenticatorsByUserId,
 });
 
 export default CustomAdapter;

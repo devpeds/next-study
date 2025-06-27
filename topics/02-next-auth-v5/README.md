@@ -131,6 +131,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
    - 기존 제공하던 SMTP 메일 프로바이더는 `Email`에서 `Nodemailer`로 변경되었다.
 3. Credentials
    - 이전 버전과 동일하게 `database` 세션 전략에서 세션이 DB에 저장되지 않고 `jwt` 토큰으로 만들어지는 현상은 유지되었다. `database` 세션 전략을 이용하려면 [jwt 인코딩 함수의 기본 동작을 변경](../01-next-auth/docs/credentials-with-db.md)해야 한다.
+4. ## WebAuthn
+   - WebAuthn 인증 타입(`webauthn`) 추가 ([구현 방법](./docs/webauthn.md))
 
 #### Adapter
 

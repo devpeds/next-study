@@ -1,15 +1,11 @@
 import { HTMLProps } from "react";
 
-type Props = Omit<HTMLProps<HTMLButtonElement>, "type"> & {
-  formType: "credentials" | "email";
-};
+type Props = Omit<HTMLProps<HTMLButtonElement>, "type">;
 
-function SubmitButton({ formType, ...props }: Props) {
+function SubmitButton(props: Props) {
   return (
     <button
-      className={`cursor-pointer mt-5 w-full py-3 px-4 rounded-md font-bold text-xl text-white ${
-        formType === "credentials" ? "bg-green-700" : "bg-blue-700"
-      }`}
+      className="cursor-pointer mt-5 w-full py-3 px-4 rounded-md font-bold text-xl text-white bg-green-700"
       {...props}
     />
   );

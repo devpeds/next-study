@@ -1,12 +1,13 @@
 import Link from "next/link";
-import FormField from "./form-field";
+import FormField from "../form-field";
 import { CredentialInput } from "next-auth/providers/credentials";
-import SubmitButton from "./submit-button";
+import SubmitButton from "../submit-button";
 import { ProviderId } from "next-auth/providers";
 import { signIn } from "@/auth";
 import { redirect } from "next/navigation";
 import { AuthError } from "next-auth";
 import { HTMLProps } from "react";
+import WebAuthnSignInForm from "./webauthn";
 
 type Props = {
   className?: string;
@@ -18,7 +19,7 @@ type EmailSignInFormProps = Props & {
 };
 
 type CredentialsSignInFormProps = Props & {
-  credentials: [string, CredentialInput][];
+  formFields: [string, CredentialInput][];
 };
 
 function handleAction(providerId: ProviderId, redirectTo?: string) {
@@ -52,14 +53,14 @@ export function EmailSignInForm({
         label="Email"
         placeholder="example@example.com"
       />
-      <SubmitButton formType="email">Sign in with Email</SubmitButton>
+      <SubmitButton>Sign in with Email</SubmitButton>
     </form>
   );
 }
 
 export function CredentialsSignInForm({
   className,
-  credentials,
+  formFields,
   callbackUrl,
 }: CredentialsSignInFormProps) {
   return (
@@ -67,16 +68,16 @@ export function CredentialsSignInForm({
       className={className}
       action={handleAction("credentials", callbackUrl)}
     >
-      {credentials.map(([name, credential]) => (
+      {formFields.map(([name, field]) => (
         <FormField
           key={name}
-          {...(credential as HTMLProps<HTMLInputElement>)}
+          {...(field as HTMLProps<HTMLInputElement>)}
           id={`credentials-${name}`}
-          label={credential.label ?? name}
+          label={field.label ?? name}
           name={name}
         />
       ))}
-      <SubmitButton formType="credentials">Sign in</SubmitButton>
+      <SubmitButton>Sign in</SubmitButton>
       <Link
         className="underline text-blue-500"
         href={"/signup?" + (callbackUrl ?? "")}
