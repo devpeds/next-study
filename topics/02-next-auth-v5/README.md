@@ -143,3 +143,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 #### Adapter
 
 - `deleteUser()`, `unlinkAccount()` 함수가 추가되었으나, 아직 호출하지 않는다 ([관련 문서](https://authjs.dev/guides/creating-a-database-adapter))
+
+## See Also
+
+- [WebAuthn](./docs/webauthn.md)
+- [Prisma 연동](./docs/prisma.md)
