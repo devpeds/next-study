@@ -146,5 +146,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
 ## See Also
 
-- [WebAuthn](./docs/webauthn.md)
+- [WebAuthn - 패스키 인증](./docs/webauthn.md)
+- [패스키 인증 테스트](./docs/passkey-test.md)
 - [Prisma 연동](./docs/prisma.md)
