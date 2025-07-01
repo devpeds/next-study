@@ -1,6 +1,6 @@
-# [Topic 03] Workspace
+# [Topic 03] Monorepo
 
-(TBD) workspace 관련 내용 정리?
+(TBD) Monorepo 관련 내용 정리?
 
 ## Workspace 도입
 
