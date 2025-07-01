@@ -8,16 +8,10 @@
     "./next": "./next.js"
   },
   "peerDependencies": {
-    "eslint": ">= 9",
-    "eslint-config-next": ">= 15"
+    "eslint": ">= 9"
   },
-  "peerDependenciesMeta": {
-    "eslint-config-next": {
-      "optional": true
-    }
-  },
-  "devDependencies": {
+  "dependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "eslint": "^9.30.0"
+    "eslint-config-next": "^15.3.4"
   }
 }
