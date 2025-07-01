@@ -1,4 +1,3 @@
-import { randomUUID } from "crypto";
 import { Adapter } from "next-auth/adapters";
 
 type SignUpErrorType = (typeof SignUpError.types)[number];

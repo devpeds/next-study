@@ -1,7 +1,7 @@
 import { signUp, SignUpError } from "@/auth";
 import FormField from "@/components/form-field";
 import SubmitButton from "@/components/submit-button";
-import { permanentRedirect, redirect, RedirectType } from "next/navigation";
+import { redirect } from "next/navigation";
 
 const errorMessages: Record<string, string> = {
   default: "Unable to Sign up",

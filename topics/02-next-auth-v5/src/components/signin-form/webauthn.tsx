@@ -9,7 +9,7 @@ import SubmitButton from "../submit-button";
 type Props = {
   className?: string;
   providerId: string;
-  providerName: String;
+  providerName: string;
   formFields: [string, CredentialInput][];
   redirectTo?: string;
 };

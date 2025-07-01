@@ -1,4 +1,4 @@
-declare module globalThis {
+declare namespace globalThis {
   type PageParamsBase = Record<string, string>;
   type PageSearchParamsBase = Record<string, string | string[] | undefined>;
 

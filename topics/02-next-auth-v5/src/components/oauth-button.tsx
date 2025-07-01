@@ -2,6 +2,7 @@
 
 import { OAuthProviderButtonStyles } from "next-auth/providers";
 import { signIn } from "next-auth/react";
+import Image from "next/image";
 
 type Props = {
   providerId: string;
@@ -17,10 +18,12 @@ function OAuthButton({ providerId, name, style, callbackUrl }: Props) {
       style={{ background: style?.bg, color: style?.text }}
       onClick={() => signIn(providerId, { callbackUrl })}
     >
-      <img
+      <Image
         src={`https://authjs.dev/img/providers/${providerId}.svg`}
+        alt=""
         width={24}
         height={24}
+        unoptimized
       />
       <span className="flex-1 px-3">Sign in with {name}</span>
     </button>
