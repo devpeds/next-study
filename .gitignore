@@ -12,6 +12,7 @@ next-env.d.ts
 
 # production
 build
+dist
 
 # debug
 npm-debug.log*
