@@ -1,3 +1,4 @@
+import { Body1, H4 } from "@shared/ui";
 import AuthApiAction from "./auth-api-action";
 
 type Props = {
@@ -18,7 +19,7 @@ function AuthApiPanel({ method, url, action, description }: Props) {
         >
           {method}
         </code>
-        <h3 className="text-2xl font-bold">
+        <H4>
           {url}
           {action && (
             <AuthApiAction
@@ -28,9 +29,9 @@ function AuthApiPanel({ method, url, action, description }: Props) {
                 : { action, href: url })}
             />
           )}
-        </h3>
+        </H4>
       </div>
-      <p className="mt-2 whitespace">{description}</p>
+      <Body1 className="mt-2 whitespace">{description}</Body1>
     </section>
   );
 }

@@ -7,6 +7,7 @@ import { CredentialInput } from "next-auth/providers/credentials";
 import SubmitButton from "./submit-button";
 import { FormEvent } from "react";
 import { RedirectableProviderType } from "next-auth/providers/index";
+import { TextButton } from "@shared/ui";
 
 type Props = {
   className?: string;
@@ -42,7 +43,7 @@ export function EmailSignInForm({ className, callbackUrl }: Props) {
         label="Email"
         placeholder="example@example.com"
       />
-      <SubmitButton formType="email">Sign in with Email</SubmitButton>
+      <SubmitButton className="w-full">Sign in with Email</SubmitButton>
     </form>
   );
 }
@@ -68,13 +69,15 @@ export function CredentialsSignInForm({
           placeholder={credential.placeholder}
         />
       ))}
-      <SubmitButton formType="credentials">Sign in</SubmitButton>
-      <Link
-        className="underline text-blue-300"
+      <SubmitButton className="w-full">Sign in</SubmitButton>
+      <TextButton
+        className="underline text-blue-400"
+        size="small"
+        as={Link}
         href={"/signup?" + (callbackUrl ?? "")}
       >
         no account?
-      </Link>
+      </TextButton>
     </form>
   );
 }

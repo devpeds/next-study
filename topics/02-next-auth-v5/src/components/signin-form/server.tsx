@@ -7,6 +7,7 @@ import { signIn } from "@/auth";
 import { redirect } from "next/navigation";
 import { AuthError } from "next-auth";
 import { HTMLProps } from "react";
+import { TextButton } from "@shared/ui";
 
 type Props = {
   className?: string;
@@ -52,7 +53,7 @@ export function EmailSignInForm({
         label="Email"
         placeholder="example@example.com"
       />
-      <SubmitButton>Sign in with Email</SubmitButton>
+      <SubmitButton className="w-full">Sign in with Email</SubmitButton>
     </form>
   );
 }
@@ -76,13 +77,15 @@ export function CredentialsSignInForm({
           name={name}
         />
       ))}
-      <SubmitButton>Sign in</SubmitButton>
-      <Link
-        className="underline text-blue-500"
+      <SubmitButton className="w-full">Sign in</SubmitButton>
+      <TextButton
+        className="underline text-blue-400"
+        size="small"
+        as={Link}
         href={"/signup?" + (redirectTo ?? "")}
       >
         no account?
-      </Link>
+      </TextButton>
     </form>
   );
 }

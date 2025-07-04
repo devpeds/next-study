@@ -1,15 +1,17 @@
-import { HTMLProps } from "react";
+import { cn, FilledButton } from "@shared/ui";
 
-type Props = Omit<HTMLProps<HTMLButtonElement>, "type"> & {
-  formType: "credentials" | "email";
-};
+type Props = Omit<
+  React.ComponentPropsWithRef<typeof FilledButton<"button">>,
+  "type" | "as"
+>;
 
-function SubmitButton({ formType, ...props }: Props) {
+function SubmitButton({ className, ...props }: Props) {
   return (
-    <button
-      className={`cursor-pointer mt-5 w-full py-3 px-4 rounded-md font-bold text-xl ${
-        formType === "credentials" ? "bg-green-700" : "bg-blue-700"
-      }`}
+    <FilledButton
+      className={cn("font-bold", className)}
+      size="large"
+      color="success"
+      type="submit"
       {...props}
     />
   );

@@ -1,7 +1,7 @@
 import FormField from "@/components/form-field";
 import SubmitButton from "@/components/submit-button";
 import db from "@/db";
-import { getCsrfToken } from "next-auth/react";
+import { H2 } from "@shared/ui";
 import { redirect, RedirectType } from "next/navigation";
 
 enum Errors {
@@ -20,18 +20,12 @@ export default async function SignUp(
 ) {
   const { error, callbackUrl } = await props.searchParams;
 
-  const csrf = await getCsrfToken();
-
   return (
     <div className="flex-1 flex flex-col items-center justify-center px-5">
       <form
         className="flex flex-col items-center space-y-5 bg-gray-700 p-12 max-w-lg w-full rounded-xl"
         action={async (data) => {
           "use server";
-          if (csrf !== data.get("csrfToken")) {
-            throw new Error("unmatched CSRF token");
-          }
-
           let search = (callbackUrl && `?callbackUrl=${callbackUrl}`) ?? "";
 
           const name = data.get("name") as string | null;
@@ -59,7 +53,7 @@ export default async function SignUp(
           redirect("/api/auth/signin" + search);
         }}
       >
-        <h1 className="font-bold text-4xl">Sign Up</h1>
+        <H2 className="text-center">Sign Up</H2>
         <div className="w-full">
           {error && (
             <div className="bg-red-200 text-red-800 p-4 rounded-md">
@@ -67,7 +61,6 @@ export default async function SignUp(
             </div>
           )}
         </div>
-        <input hidden readOnly name="csrfToken" value={csrf} />
         <FormField
           id="signup-form-name"
           required
@@ -90,7 +83,7 @@ export default async function SignUp(
           placeholder="Password"
           type="password"
         />
-        <SubmitButton formType="credentials">Submit</SubmitButton>
+        <SubmitButton className="w-full">Submit</SubmitButton>
       </form>
     </div>
   );

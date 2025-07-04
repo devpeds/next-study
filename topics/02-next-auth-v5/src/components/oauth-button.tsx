@@ -1,5 +1,6 @@
 "use client";
 
+import { FilledButton } from "@shared/ui";
 import { OAuthProviderButtonStyles } from "next-auth/providers";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
@@ -13,9 +14,10 @@ type Props = {
 
 function OAuthButton({ providerId, name, style, callbackUrl }: Props) {
   return (
-    <button
-      className="cursor-pointer w-full bg-gray-400 text-gray-800 rounded-md py-3 px-4 font-bold text-xl flex items-center justify-center"
+    <FilledButton
+      className="w-full bg-gray-400"
       style={{ background: style?.bg, color: style?.text }}
+      size="large"
       onClick={() => signIn(providerId, { callbackUrl })}
     >
       <Image
@@ -26,7 +28,7 @@ function OAuthButton({ providerId, name, style, callbackUrl }: Props) {
         unoptimized
       />
       <span className="flex-1 px-3">Sign in with {name}</span>
-    </button>
+    </FilledButton>
   );
 }
 

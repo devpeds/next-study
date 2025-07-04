@@ -25,8 +25,8 @@ export function CodeInline({ className, children }: CodeProps) {
   return (
     <code
       className={cn(
-        "bg-gray-100 text-rose-500 rounded-sm px-1 py-0.5",
-        "dark:bg-gray-300",
+        "bg-gray-200 text-rose-500 rounded-sm px-1 py-0.5",
+        "dark:bg-gray-700",
         className
       )}
     >
@@ -40,7 +40,7 @@ export function CodeBlock({ className, children }: CodeProps) {
     <pre
       className={cn(
         "p-4 rounded-lg overflow-scroll",
-        "bg-gray-100 text-gray-800",
+        "bg-gray-50 text-gray-800",
         className
       )}
     >

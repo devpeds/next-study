@@ -5,6 +5,7 @@ import {
   EmailSignInForm,
 } from "@/components/signin-form/server";
 import WebAuthnSignInForm from "@/components/signin-form/webauthn";
+import { H2 } from "@shared/ui";
 import { Fragment } from "react";
 
 const errorMessages: Record<string, string> = {
@@ -28,7 +29,7 @@ export default async function SignIn({
   return (
     <div className="flex-1 flex flex-col items-center justify-center px-5">
       <div className="flex flex-col items-center space-y-8 bg-gray-100 dark:bg-gray-700 p-12 max-w-lg w-full rounded-xl">
-        <h1 className="font-bold text-4xl">Sign In</h1>
+        <H2>Sign In</H2>
         <div className="w-full">
           {error && (
             <div className="bg-red-200 text-red-800 p-4 rounded-md">

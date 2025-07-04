@@ -47,7 +47,9 @@ function WebAuthnSignInForm({
           name={name}
         />
       ))}
-      <SubmitButton>Sign In with {providerName}</SubmitButton>
+      <SubmitButton className="w-full">
+        Sign In with {providerName}
+      </SubmitButton>
     </form>
   );
 }
