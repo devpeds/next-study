@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import inMemoryDB from "@/db/in-memory";
 import { CodeBlock, CodeInline } from "@shared/ui";
+import { Link } from "@shared/ui/next";
 
 export default async function DBPage() {
   const session = await auth();
@@ -17,13 +18,9 @@ export default async function DBPage() {
       {process.env.ADAPTER_TYPE === "prisma" && (
         <p>
           Run <CodeInline>pnpm prisma:browse</CodeInline> to open{" "}
-          <a
-            className="cursor-pointer text-blue-400 underline"
-            target="_blank"
-            href="http://localhost:5555"
-          >
+          <Link target="_blank" href="http://localhost:5555">
             Prisma Studio
-          </a>
+          </Link>
         </p>
       )}
     </div>

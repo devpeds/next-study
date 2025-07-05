@@ -1,33 +1,15 @@
+import typography from "@lib/cva/typography";
 import type {
   PolyMorphicProps,
   PolyMorphicPropsWithVariants,
 } from "@lib/types";
 import { cn } from "@lib/utils";
-import { cva } from "class-variance-authority";
 import { createElement } from "react";
 
 type TypographyProps<T extends React.ElementType> =
   PolyMorphicPropsWithVariants<T, typeof typography, "typography">;
 
 type TypographyVariant = TypographyProps<React.ElementType>["typography"];
-
-const typography = cva("leading-normal", {
-  variants: {
-    typography: {
-      h1: "text-5xl font-bold leading-tight",
-      h2: "text-4xl font-bold leading-none",
-      h3: "text-3xl font-bold leading-snug",
-      h4: "text-2xl font-bold leading-snug",
-      h5: "text-2xl font-bold leading-snug",
-      h6: "text-2xl font-normal leading-snug",
-      subtitle1: "text-lg font-normal",
-      subtitle2: "text-base font-bold",
-      body1: "text-lg",
-      body2: "text-base",
-      caption: "text-xs leading-none",
-    },
-  },
-});
 
 function createTypography<T extends React.ElementType = "p">(
   typography: TypographyVariant,

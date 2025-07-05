@@ -1,12 +1,12 @@
 "use client";
 
-import { TextButton, TextField } from "@shared/ui";
+import { TextField } from "@shared/ui";
 import { CredentialInput } from "next-auth/providers/credentials";
 import { RedirectableProviderType } from "next-auth/providers/index";
 import { signIn } from "next-auth/react";
-import Link from "next/link";
 import { FormEvent } from "react";
 import SubmitButton from "./submit-button";
+import { Link } from "@shared/ui/next";
 
 type Props = {
   className?: string;
@@ -71,14 +71,7 @@ export function CredentialsSignInForm({
         />
       ))}
       <SubmitButton className="w-full">Sign in</SubmitButton>
-      <TextButton
-        className="underline text-blue-400"
-        size="small"
-        as={Link}
-        href={"/signup?" + (callbackUrl ?? "")}
-      >
-        no account?
-      </TextButton>
+      <Link href={"/signup?" + (callbackUrl ?? "")}>no account?</Link>
     </form>
   );
 }

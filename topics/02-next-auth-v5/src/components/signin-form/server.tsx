@@ -1,12 +1,12 @@
 import { signIn } from "@/auth";
-import { TextButton, TextField } from "@shared/ui";
+import { TextField } from "@shared/ui";
 import { AuthError } from "next-auth";
 import { ProviderId } from "next-auth/providers";
 import { CredentialInput } from "next-auth/providers/credentials";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { HTMLProps } from "react";
 import SubmitButton from "../submit-button";
+import { Link } from "@shared/ui/next";
 
 type Props = {
   className?: string;
@@ -79,14 +79,7 @@ export function CredentialsSignInForm({
         />
       ))}
       <SubmitButton className="w-full">Sign in</SubmitButton>
-      <TextButton
-        className="underline text-blue-400"
-        size="small"
-        as={Link}
-        href={"/signup?" + (redirectTo ?? "")}
-      >
-        no account?
-      </TextButton>
+      <Link href={"/signup?" + (redirectTo ?? "")}>no account?</Link>
     </form>
   );
 }

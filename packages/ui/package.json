@@ -5,6 +5,7 @@
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
+    "./next": "./dist/next/index.js",
     "./styles.css": "./dist/styles.css"
   },
   "scripts": {
@@ -15,7 +16,13 @@
   "peerDependencies": {
     "react": "^19",
     "react-dom": "^19",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "next": ">=15"
+  },
+  "peerDependenciesMeta": {
+    "next": {
+      "optional": true
+    }
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -32,6 +39,7 @@
     "eslint": "^9.29.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "glob": "^11.0.3",
+    "next": "^15.3.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "rollup-plugin-copy": "^3.5.0",

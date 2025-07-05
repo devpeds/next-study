@@ -29,7 +29,7 @@ export default defineConfig({
       formats: ["es"],
     },
     rollupOptions: {
-      external: ["react", "react/jsx-runtime"],
+      external: ["react", "react/jsx-runtime", "next/link"],
       input: {
         styles: path.resolve(__dirname, "lib/styles.css"),
         ...Object.fromEntries(
