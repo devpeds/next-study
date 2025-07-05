@@ -1,8 +1,8 @@
 "use client";
 
+import { TextField } from "@shared/ui";
 import { CredentialInput } from "next-auth/providers";
 import { signIn } from "next-auth/webauthn";
-import FormField from "../form-field";
 import { FormEvent, HTMLProps } from "react";
 import SubmitButton from "../submit-button";
 
@@ -35,8 +35,9 @@ function WebAuthnSignInForm({
   return (
     <form className={className} onSubmit={handleSubmit}>
       {formFields.map(([name, { autocomplete, ...field }]) => (
-        <FormField
+        <TextField
           key={name}
+          className="w-full"
           {...(field as HTMLProps<HTMLInputElement>)}
           // 프로바이더(Passkey) 설정에서 `autocomplete: "username webauthn"`으로 데이터가 들어옴
           // 설정 단에서 autocomplete 대신 autoComplete을 사용하면 Configuration Error가 발생해

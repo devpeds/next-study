@@ -1,13 +1,12 @@
-import { HTMLProps } from "react";
+import { cn } from "@lib/utils";
 
-type Props = {
-  id: string;
+type TextFieldProps = {
   label: string;
-} & Omit<HTMLProps<HTMLInputElement>, "id" | "className">;
+} & React.HTMLProps<HTMLInputElement>;
 
-function FormField({ label, id, ...props }: Props) {
+export function TextField({ label, id, className, ...props }: TextFieldProps) {
   return (
-    <div className="flex flex-col w-full">
+    <div className={cn("flex flex-col", className)}>
       <label className="mb-3 font-bold text-sm cursor-pointer" htmlFor={id}>
         {label}
       </label>
@@ -20,5 +19,3 @@ function FormField({ label, id, ...props }: Props) {
     </div>
   );
 }
-
-export default FormField;

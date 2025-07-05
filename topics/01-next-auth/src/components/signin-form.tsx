@@ -1,13 +1,12 @@
 "use client";
 
+import { TextButton, TextField } from "@shared/ui";
+import { CredentialInput } from "next-auth/providers/credentials";
+import { RedirectableProviderType } from "next-auth/providers/index";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import FormField from "./form-field";
-import { CredentialInput } from "next-auth/providers/credentials";
-import SubmitButton from "./submit-button";
 import { FormEvent } from "react";
-import { RedirectableProviderType } from "next-auth/providers/index";
-import { TextButton } from "@shared/ui";
+import SubmitButton from "./submit-button";
 
 type Props = {
   className?: string;
@@ -37,8 +36,9 @@ function handleSubmit(
 export function EmailSignInForm({ className, callbackUrl }: Props) {
   return (
     <form className={className} onSubmit={handleSubmit("email", callbackUrl)}>
-      <FormField
+      <TextField
         id="email-id-email"
+        className="w-full"
         name="email"
         label="Email"
         placeholder="example@example.com"
@@ -59,9 +59,10 @@ export function CredentialsSignInForm({
       onSubmit={handleSubmit("credentials", callbackUrl)}
     >
       {credentials.map(([name, credential]) => (
-        <FormField
+        <TextField
           key={name}
           id={`credentials-${name}`}
+          className="w-full"
           required
           label={credential.label ?? name}
           name={name}

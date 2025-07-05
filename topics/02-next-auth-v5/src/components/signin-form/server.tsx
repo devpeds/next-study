@@ -1,13 +1,12 @@
-import Link from "next/link";
-import FormField from "../form-field";
-import { CredentialInput } from "next-auth/providers/credentials";
-import SubmitButton from "../submit-button";
-import { ProviderId } from "next-auth/providers";
 import { signIn } from "@/auth";
-import { redirect } from "next/navigation";
+import { TextButton, TextField } from "@shared/ui";
 import { AuthError } from "next-auth";
+import { ProviderId } from "next-auth/providers";
+import { CredentialInput } from "next-auth/providers/credentials";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 import { HTMLProps } from "react";
-import { TextButton } from "@shared/ui";
+import SubmitButton from "../submit-button";
 
 type Props = {
   className?: string;
@@ -47,8 +46,9 @@ export function EmailSignInForm({
 }: EmailSignInFormProps) {
   return (
     <form className={className} action={handleAction(providerId, redirectTo)}>
-      <FormField
+      <TextField
         id="email-id-email"
+        className="w-full"
         name="email"
         label="Email"
         placeholder="example@example.com"
@@ -69,8 +69,9 @@ export function CredentialsSignInForm({
       action={handleAction("credentials", redirectTo)}
     >
       {formFields.map(([name, field]) => (
-        <FormField
+        <TextField
           key={name}
+          className="w-full"
           {...(field as HTMLProps<HTMLInputElement>)}
           id={`credentials-${name}`}
           label={field.label ?? name}

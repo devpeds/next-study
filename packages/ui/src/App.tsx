@@ -2,6 +2,7 @@ import { H1, H2 } from "@lib/components/typography";
 import TypographySection from "./sections/typography";
 import ButtonSection from "./sections/button";
 import CodeSection from "./sections/code";
+import TextFieldSection from "./sections/textfield";
 
 function Section({
   title,
@@ -30,6 +31,9 @@ function App() {
       </Section>
       <Section title="Code">
         <CodeSection />
+      </Section>
+      <Section title="TextField">
+        <TextFieldSection />
       </Section>
     </main>
   );

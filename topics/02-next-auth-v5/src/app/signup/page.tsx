@@ -1,7 +1,6 @@
 import { signUp, SignUpError } from "@/auth";
-import FormField from "@/components/form-field";
 import SubmitButton from "@/components/submit-button";
-import { H2 } from "@shared/ui";
+import { H2, TextField } from "@shared/ui";
 import { redirect } from "next/navigation";
 
 const errorMessages: Record<string, string> = {
@@ -55,21 +54,21 @@ export default async function SignUp(
             </div>
           )}
         </div>
-        <FormField
+        <TextField
           id="signup-form-name"
           required
           name="name"
           label="Name"
           placeholder="Name"
         />
-        <FormField
+        <TextField
           id="signup-form-email"
           required
           name="email"
           label="Email"
           placeholder="Email"
         />
-        <FormField
+        <TextField
           id="signup-form-password"
           required
           name="password"

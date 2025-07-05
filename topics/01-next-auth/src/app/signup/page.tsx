@@ -1,7 +1,6 @@
-import FormField from "@/components/form-field";
 import SubmitButton from "@/components/submit-button";
 import db from "@/db";
-import { H2 } from "@shared/ui";
+import { H2, TextField } from "@shared/ui";
 import { redirect, RedirectType } from "next/navigation";
 
 enum Errors {
@@ -61,22 +60,25 @@ export default async function SignUp(
             </div>
           )}
         </div>
-        <FormField
+        <TextField
           id="signup-form-name"
+          className="w-full"
           required
           name="name"
           label="Name"
           placeholder="Name"
         />
-        <FormField
+        <TextField
           id="signup-form-email"
+          className="w-full"
           required
           name="email"
           label="Email"
           placeholder="Email"
         />
-        <FormField
+        <TextField
           id="signup-form-password"
+          className="w-full"
           required
           name="password"
           label="Password"
