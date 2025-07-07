@@ -1,5 +1,5 @@
-@import "@shared/ui/styles.css";
 @import "tailwindcss";
+@import "@shared/ui/styles.css";
 
 @theme {
   --font-sans: var(--font-geist-sans);

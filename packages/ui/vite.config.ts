@@ -6,7 +6,6 @@ import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 import tsconfigPaths from "vite-tsconfig-paths";
-import copy from "rollup-plugin-copy";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -14,14 +13,9 @@ export default defineConfig({
     tsconfigPaths(),
     react(),
     tailwindcss(),
-    dts({ include: ["lib"], tsconfigPath: "./tsconfig.build.json" }),
-    copy({
-      targets: [{ src: "lib/globals.css", dest: "dist" }],
-      hook: "writeBundle",
-    }),
+    dts({ tsconfigPath: "./tsconfig.build.json" }),
   ],
   build: {
-    sourcemap: true,
     copyPublicDir: false,
     cssCodeSplit: true,
     lib: {
