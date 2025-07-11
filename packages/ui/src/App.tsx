@@ -1,8 +1,9 @@
-import { H1, H2 } from "@lib/components/typography";
+import { H2 } from "@lib/components/typography";
 import TypographySection from "./sections/typography";
 import ButtonSection from "./sections/button";
 import CodeSection from "./sections/code";
 import TextFieldSection from "./sections/textfield";
+import { ActionButton, NavBar } from "@lib";
 
 function Section({
   title,
@@ -21,21 +22,31 @@ function Section({
 
 function App() {
   return (
-    <main className="py-5 px-10 m-auto max-w-4xl">
-      <H1 className="mb-10">@shared/ui</H1>
-      <Section title="Typography">
-        <TypographySection />
-      </Section>
-      <Section title="Button">
-        <ButtonSection />
-      </Section>
-      <Section title="Code">
-        <CodeSection />
-      </Section>
-      <Section title="TextField">
-        <TextFieldSection />
-      </Section>
-    </main>
+    <>
+      <NavBar
+        title="@shared/ui"
+        links={[
+          { name: "Menu1", href: "#menu1" },
+          { name: "Menu2", href: "#menu2" },
+          { name: "MenuMenu3", href: "#menu3" },
+        ]}
+        right={<ActionButton>Sign In</ActionButton>}
+      />
+      <main className="py-5 px-10 m-auto max-w-4xl">
+        <Section title="Typography">
+          <TypographySection />
+        </Section>
+        <Section title="Button">
+          <ButtonSection />
+        </Section>
+        <Section title="Code">
+          <CodeSection />
+        </Section>
+        <Section title="TextField">
+          <TextFieldSection />
+        </Section>
+      </main>
+    </>
   );
 }
 

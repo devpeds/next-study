@@ -1,11 +1,10 @@
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
-import { glob } from "glob";
 import path from "path";
-import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 import tsconfigPaths from "vite-tsconfig-paths";
+import preserveDirectives from "rollup-plugin-preserve-directives";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -14,6 +13,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
     dts({ tsconfigPath: "./tsconfig.build.json" }),
+    preserveDirectives({ include: ["lib/**/*.{ts,tsx}"] }),
   ],
   build: {
     copyPublicDir: false,
@@ -26,27 +26,13 @@ export default defineConfig({
       external: ["react", "react/jsx-runtime", "next/link"],
       input: {
         styles: path.resolve(__dirname, "lib/styles.css"),
-        ...Object.fromEntries(
-          // https://rollupjs.org/configuration-options/#input
-          glob
-            .sync("lib/**/*.{ts,tsx}", {
-              ignore: ["lib/**/*.d.ts", "lib/types.ts"],
-            })
-            .map((file) => [
-              // 1. The name of the entry point
-              // lib/nested/foo.js becomes nested/foo
-              path.relative(
-                "lib",
-                file.slice(0, file.length - path.extname(file).length)
-              ),
-              // 2. The absolute path to the entry file
-              // lib/nested/foo.ts becomes /project/lib/nested/foo.ts
-              fileURLToPath(new URL(file, import.meta.url)),
-            ])
-        ),
+        index: path.resolve(__dirname, "lib/index.ts"),
+        "next/index": path.resolve(__dirname, "lib/next/index.ts"),
       },
       output: {
         entryFileNames: "[name].js",
+        preserveModulesRoot: "lib",
+        preserveModules: true,
       },
     },
   },
