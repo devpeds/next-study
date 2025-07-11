@@ -6,7 +6,8 @@
   "bin": "./dist/index.js",
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "eslint ."
   },
   "dependencies": {
     "commander": "^14.0.0",

@@ -1,13 +1,11 @@
-import tseslint from "typescript-eslint";
-import js from "@eslint/js";
 import pluginReact from "eslint-plugin-react";
 import pluginReactHooks from "eslint-plugin-react-hooks";
 import globals from "globals";
+import baseConfig from "./base.js";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
-  js.configs.recommended,
-  ...tseslint.configs.recommended,
+  ...baseConfig,
   pluginReact.configs.flat.recommended,
   pluginReactHooks.configs["recommended-latest"],
   {
@@ -20,14 +18,6 @@ export default [
       // React scope no longer necessary with new JSX transform.
       "react/react-in-jsx-scope": "off",
       "react/display-name": "off",
-      "@typescript-eslint/no-unused-expressions": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        {
-          argsIgnorePattern: "^_",
-          caughtErrorsIgnorePattern: "^_",
-        },
-      ],
     },
   },
 ];

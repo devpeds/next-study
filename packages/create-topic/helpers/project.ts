@@ -22,7 +22,7 @@ async function getNextTopicNumber(topicsDir: string) {
           }
 
           return topic;
-        } catch (e) {
+        } catch {
           return undefined;
         }
       })

@@ -5,6 +5,7 @@
   "private": true,
   "packageManager": "pnpm@10.11.0",
   "exports": {
+    "./base": "./base.js",
     "./react": "./react.js",
     "./next": "./next.js"
   },
