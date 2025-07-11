@@ -8,8 +8,6 @@
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-nanum-sans);
-  --font-mono: var(--font-nanum-mono);
 }
 
 @media (prefers-color-scheme: dark) {

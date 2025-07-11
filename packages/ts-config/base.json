@@ -2,7 +2,9 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["esnext"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -10,8 +12,8 @@
     "declarationMap": true,
     "emitDeclarationOnly": false,
     "noEmit": false,
-    "esModuleInterop": false,
-    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": false,
     "isolatedModules": true,
     "incremental": true
   },

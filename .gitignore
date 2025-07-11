@@ -9,6 +9,7 @@ coverage
 out/
 .env.local
 next-env.d.ts
+!packages/create-topic/**/next-env.d.ts
 
 # production
 build

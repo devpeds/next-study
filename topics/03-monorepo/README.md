@@ -1,8 +1,26 @@
 # [Topic 03] Monorepo
 
-(TBD) Monorepo 관련 내용 정리?
+description here
 
-## Steps
+## Getting Started
+
+```bash
+pnpm install
+
+pnpm dev # run server in development mode (http://localhost:3000)
+
+# or
+pnpm build # build the app
+pnpm start # run server in production mode (http://localhost:3000)
+```
+
+## Tech Stack
+
+- Node 22
+- React 19
+- Next.js 15
+
+## Documentations
 
 1. [Workspace 도입](./docs/01-workspace.md)
 2. [린트 설정](./docs/02-lint.md)
