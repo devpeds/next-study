@@ -8,6 +8,7 @@ import { createProject } from "./helpers/project.js";
 import { createReadme } from "./helpers/readme.js";
 import { isKebabCase } from "./helpers/string.js";
 import { copy } from "./helpers/copy.js";
+import { createDotEnv } from "./helpers/env.js";
 
 try {
   let topicName = "";
@@ -39,13 +40,15 @@ try {
     throw new Error("the topic name must be kebab-cased");
   }
 
-  const projectDir = await createProject(topicName);
+  const rootDirectory = path.resolve(import.meta.dirname, "../../..");
+  const projectDir = await createProject(topicName, rootDirectory);
 
   const packageJson = new PackageJson(projectDir, topicName);
   await packageJson.create();
   await packageJson.install();
 
   await createReadme(projectDir, packageJson);
+  await createDotEnv(projectDir);
 
   const templateDir = path.resolve(import.meta.dirname, "../template");
   await copy(templateDir, projectDir);

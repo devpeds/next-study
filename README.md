@@ -4,6 +4,6 @@ Next.js 관련 스터디 내용을 정리한 레포지토리
 
 ## Topics
 
-- [[Topic 01] NextAuth](./topics/01-next-auth/)
-- [[Topic 02] Auth.js (NextAuth v5)](./topics/02-next-auth-v5/)
-- [[Topic 03] Monorepo](./topics/03-monorepo/)
+- [01-next-auth](./topics/01-next-auth/)
+- [02-next-auth-v5](./topics/02-next-auth-v5/)
+- [03-monorepo](./topics/03-monorepo/)

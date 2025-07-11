@@ -1,7 +1,5 @@
 # [Topic 03] Monorepo
 
-description here
-
 ## Getting Started
 
 ```bash

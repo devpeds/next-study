@@ -1,15 +1,15 @@
 import { writeFile } from "fs/promises";
 import { PackageJson } from "./package.js";
 import path from "path";
+import { parseTopic } from "./project.js";
 
 const readme = (args: {
   topicNumber: string;
+  topicName: string;
   nodeVersion: number;
   reactVersion: number;
   nextVersion: number;
-}) => `# [Topic ${args.topicNumber}] Topic Name
-
-description here
+}) => `# [Topic ${args.topicNumber}] ${args.topicName}
 
 ## Getting Started
 
@@ -35,15 +35,10 @@ pnpm start # run server in production mode (http://localhost:3000)
 
 `;
 
-function parseTopicNumber(projectDir: string) {
-  const arr = projectDir.split("/");
-  return arr[arr.length - 1].split("-")[0];
-}
-
 function parseSemver(semver: string) {
   const results = semver.match(/(\d+)\.(\d+)\.(\d+)/);
   if (!results) {
-    throw new Error(`failed to parsing: ${semver}`);
+    throw new Error(`failed to parsing semver: ${semver}`);
   }
 
   return [results[1], results[2], results[3]].map((v) => Number(v));
@@ -54,13 +49,13 @@ export async function createReadme(
   packageJson: PackageJson
 ) {
   console.log("creating README.md...");
-  const topicNumber = parseTopicNumber(projectDir);
+  const [topicNumber, topicName] = parseTopic(projectDir);
   const [nodeVersion] = parseSemver(process.version);
   const [reactVersion] = parseSemver(packageJson.dependencies["react"]);
   const [nextVersion] = parseSemver(packageJson.dependencies["next"]);
 
   await writeFile(
     path.resolve(projectDir, "README.md"),
-    readme({ topicNumber, nodeVersion, reactVersion, nextVersion })
+    readme({ topicNumber, topicName, nodeVersion, reactVersion, nextVersion })
   );
 }
