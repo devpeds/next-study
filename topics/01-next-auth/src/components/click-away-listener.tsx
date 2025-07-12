@@ -32,7 +32,7 @@ type Props = {
   onClickAway: () => void;
 };
 
-function mergeRefs<T extends unknown>(...refs: Ref<T>[]): RefCallback<T> {
+function mergeRefs<T>(...refs: Ref<T>[]): RefCallback<T> {
   return (value) => {
     refs.forEach((ref) => {
       if (typeof ref === "function") {

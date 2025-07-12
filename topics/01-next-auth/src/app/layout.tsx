@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Nanum_Gothic, Nanum_Gothic_Coding } from "next/font/google";
 import "./globals.css";
-import NavBar from "@/components/navbar";
 import Provider from "@/components/provider";
+import { Layout } from "@shared/ui/next";
+import AuthButton from "@/components/auth-button";
 
 const nanumGothic = Nanum_Gothic({
   weight: ["400", "700"],
@@ -28,16 +29,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body
-        className={`${nanumGothic.variable} ${nanumGothicCoding.variable} antialiased`}
-      >
-        <div className="relative flex flex-col min-h-screen font-sans">
-          <Provider>
-            <NavBar />
-            <main className="flex-1 flex flex-col p-8">{children}</main>
-          </Provider>
-        </div>
-      </body>
+      <Provider>
+        <Layout
+          title="NextAuth.js Example"
+          links={[{ name: "Dynamic", href: "/dynamic" }]}
+          right={<AuthButton />}
+          sansVariable={nanumGothic.variable}
+          monoVariable={nanumGothicCoding.variable}
+        >
+          {children}
+        </Layout>
+      </Provider>
     </html>
   );
 }

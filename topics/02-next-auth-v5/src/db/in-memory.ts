@@ -22,7 +22,10 @@ const inMemoryDB = (() => {
         sessions,
         verificationTokens,
         authenticators,
-      }).map(([key, obj]) => [key, Array.from(obj.values() as any)]);
+      }).map(([key, obj]) => [
+        key,
+        Array.from((obj as Map<string, unknown>).values()),
+      ]);
       return Object.fromEntries(entries);
     },
     // users

@@ -1,0 +1,9 @@
+{
+  "extends": "@shared/ts-config/base.json",
+  "compilerOptions": {
+    "declaration": false,
+    "declarationMap": false,
+    "outDir": "./dist"
+  },
+  "include": ["index.ts", "helpers/*.ts"]
+}

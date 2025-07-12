@@ -1,5 +1,6 @@
 "use client";
 
+import { ActionButton } from "@shared/ui";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 function AuthButton() {
@@ -21,13 +22,9 @@ function AuthButton() {
   };
 
   return (
-    <button
-      className="cursor-pointer min-w-[65px] font-bold hover:text-primary-400 focus:text-primary-400"
-      disabled={status === "loading"}
-      onClick={handleClick}
-    >
+    <ActionButton disabled={status === "loading"} onClick={handleClick}>
       {text}
-    </button>
+    </ActionButton>
   );
 }
 

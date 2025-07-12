@@ -1,7 +1,7 @@
 import { signUp, SignUpError } from "@/auth";
-import FormField from "@/components/form-field";
 import SubmitButton from "@/components/submit-button";
-import { permanentRedirect, redirect, RedirectType } from "next/navigation";
+import { H2, TextField } from "@shared/ui";
+import { redirect } from "next/navigation";
 
 const errorMessages: Record<string, string> = {
   default: "Unable to Sign up",
@@ -17,7 +17,7 @@ export default async function SignUp(
   return (
     <div className="flex-1 flex flex-col items-center justify-center px-5">
       <form
-        className="flex flex-col items-center space-y-5 bg-gray-100 dark:bg-gray-700 p-12 max-w-lg w-full rounded-xl"
+        className="flex flex-col items-stretch space-y-5 bg-gray-100 dark:bg-gray-700 p-12 max-w-lg w-full rounded-xl"
         action={async (data) => {
           "use server";
           const query = new URLSearchParams();
@@ -46,7 +46,7 @@ export default async function SignUp(
           }
         }}
       >
-        <h1 className="font-bold text-4xl">Sign Up</h1>
+        <H2 className="text-center">Sign Up</H2>
         <div className="w-full">
           {error && (
             <div className="bg-red-200 text-red-800 p-4 rounded-md">
@@ -54,21 +54,21 @@ export default async function SignUp(
             </div>
           )}
         </div>
-        <FormField
+        <TextField
           id="signup-form-name"
           required
           name="name"
           label="Name"
           placeholder="Name"
         />
-        <FormField
+        <TextField
           id="signup-form-email"
           required
           name="email"
           label="Email"
           placeholder="Email"
         />
-        <FormField
+        <TextField
           id="signup-form-password"
           required
           name="password"

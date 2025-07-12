@@ -1,12 +1,13 @@
 import AuthApiPanel from "@/components/auth-api-panel";
 import * as ClientSessionData from "@/components/session-data/client";
 import ServerSessionData from "@/components/session-data/server";
+import { H1, H2, Subtitle1 } from "@shared/ui";
 import { ReactNode } from "react";
 
 export default function Home() {
   return (
     <div className="flex-1 flex flex-col items-center justify-center">
-      <h1 className="font-bold text-4xl mb-10">Welcome</h1>
+      <H1 className="mb-10">Welcome</H1>
       <Section title="Session Data">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <ClientSessionData.UseSession />
@@ -81,8 +82,8 @@ function Section(props: {
   const { title, description, children } = props;
   return (
     <section className="flex flex-col w-full">
-      <h2 className="font-bold text-2xl">{title}</h2>
-      <p className="mt-2 mb-6 text-gray-400">{description}</p>
+      <H2>{title}</H2>
+      <Subtitle1 className="mt-2 mb-6 text-gray-400">{description}</Subtitle1>
       {children}
       <hr className="border-gray-600 m-10" />
     </section>

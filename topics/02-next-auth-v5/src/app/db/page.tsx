@@ -1,5 +1,7 @@
 import { auth } from "@/auth";
 import inMemoryDB from "@/db/in-memory";
+import { CodeBlock, CodeInline } from "@shared/ui";
+import { Link } from "@shared/ui/next";
 
 export default async function DBPage() {
   const session = await auth();
@@ -11,24 +13,14 @@ export default async function DBPage() {
         Click &quot;{buttonName} Button&quot; on the right upper side
       </div>
       {process.env.ADAPTER_TYPE === "in-memory" && (
-        <pre>
-          <code>{JSON.stringify(inMemoryDB.all(), null, 2)}</code>
-        </pre>
+        <CodeBlock>{inMemoryDB.all()}</CodeBlock>
       )}
       {process.env.ADAPTER_TYPE === "prisma" && (
         <p>
-          Run{" "}
-          <code className="text-red-500 bg-gray-600 px-1.5 py-1 rounded-sm">
-            pnpm prisma:browse
-          </code>{" "}
-          to open{" "}
-          <a
-            className="cursor-pointer text-blue-400 underline"
-            target="_blank"
-            href="http://localhost:5555"
-          >
+          Run <CodeInline>pnpm prisma:browse</CodeInline> to open{" "}
+          <Link target="_blank" href="http://localhost:5555">
             Prisma Studio
-          </a>
+          </Link>
         </p>
       )}
     </div>
