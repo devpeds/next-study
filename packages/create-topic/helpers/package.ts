@@ -1,5 +1,6 @@
 import { writeFile } from "fs/promises";
 import path from "path";
+
 import { spawnAsync } from "./command.js";
 
 export class PackageJson {

@@ -1,6 +1,7 @@
 import { writeFile } from "fs/promises";
-import { parseTopic } from "./project.js";
 import path from "path";
+
+import { parseTopic } from "./project.js";
 
 export async function createDotEnv(projectDir: string) {
   console.log("creating .env.local...");

@@ -1,10 +1,10 @@
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
+import { preserveDirectives } from "rollup-plugin-preserve-directives";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 import tsconfigPaths from "vite-tsconfig-paths";
-import preserveDirectives from "rollup-plugin-preserve-directives";
 
 // https://vite.dev/config/
 export default defineConfig({

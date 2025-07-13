@@ -1,6 +1,7 @@
-import { cn } from "@lib/utils";
-import { TextButton } from "../button";
 import type { PolyMorphicProps } from "@lib/types";
+import { cn } from "@lib/utils";
+
+import { TextButton } from "../button";
 
 type ActionButtonProps<T extends React.ElementType> = PolyMorphicProps<T>;
 

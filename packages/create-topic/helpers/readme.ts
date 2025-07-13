@@ -1,6 +1,7 @@
 import { writeFile } from "fs/promises";
-import { PackageJson } from "./package.js";
 import path from "path";
+
+import { PackageJson } from "./package.js";
 import { parseTopic } from "./project.js";
 
 const readme = (args: {

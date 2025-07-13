@@ -2,13 +2,14 @@ import { Command } from "commander";
 import path from "path";
 import process from "process";
 import prompts from "prompts";
+
 import { abort } from "./helpers/abort.js";
+import { copy } from "./helpers/copy.js";
+import { createDotEnv } from "./helpers/env.js";
 import { PackageJson } from "./helpers/package.js";
 import { createProject } from "./helpers/project.js";
 import { createReadme } from "./helpers/readme.js";
 import { isKebabCase } from "./helpers/string.js";
-import { copy } from "./helpers/copy.js";
-import { createDotEnv } from "./helpers/env.js";
 
 try {
   let topicName = "";
