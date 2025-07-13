@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { OAuthProviderButtonStyles } from "next-auth/providers/oauth";
 import { signIn } from "next-auth/react";
-import Image from "next/image";
 
 type Props = {
   providerId: string;

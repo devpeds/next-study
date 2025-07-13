@@ -1,7 +1,8 @@
-import { auth } from "@/auth";
-import inMemoryDB from "@/db/in-memory";
 import { CodeBlock, CodeInline } from "@shared/ui";
 import { Link } from "@shared/ui/next";
+
+import { auth } from "@/auth";
+import inMemoryDB from "@/db/in-memory";
 
 export default async function DBPage() {
   const session = await auth();

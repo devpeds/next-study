@@ -9,8 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@shared/eslint-config": "workspace:*",
-    "@shared/ts-config": "workspace:*",
     "@shared/ui": "workspace:*",
     "next": "15.3.3",
     "next-auth": "^4.24.11",
@@ -19,7 +17,8 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
+    "@shared/eslint-config": "workspace:*",
+    "@shared/ts-config": "workspace:*",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

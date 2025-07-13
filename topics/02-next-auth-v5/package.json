@@ -13,8 +13,6 @@
   "dependencies": {
     "@auth/prisma-adapter": "^2.10.0",
     "@prisma/client": "^6.10.1",
-    "@shared/eslint-config": "workspace:*",
-    "@shared/ts-config": "workspace:*",
     "@shared/ui": "workspace:*",
     "@simplewebauthn/browser": "9.0.1",
     "@simplewebauthn/server": "9.0.3",
@@ -25,7 +23,8 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
+    "@shared/eslint-config": "workspace:*",
+    "@shared/ts-config": "workspace:*",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

@@ -1,9 +1,9 @@
 "use client";
 
 import { FilledButton } from "@shared/ui";
+import Image from "next/image";
 import { OAuthProviderButtonStyles } from "next-auth/providers";
 import { signIn } from "next-auth/react";
-import Image from "next/image";
 
 type Props = {
   providerId: string;

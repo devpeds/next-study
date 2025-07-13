@@ -1,12 +1,13 @@
 "use client";
 
 import { TextField } from "@shared/ui";
+import { Link } from "@shared/ui/next";
 import { CredentialInput } from "next-auth/providers/credentials";
 import { RedirectableProviderType } from "next-auth/providers/index";
 import { signIn } from "next-auth/react";
 import { FormEvent } from "react";
+
 import SubmitButton from "./submit-button";
-import { Link } from "@shared/ui/next";
 
 type Props = {
   className?: string;

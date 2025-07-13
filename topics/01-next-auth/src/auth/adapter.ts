@@ -1,5 +1,6 @@
-import db from "@/db";
 import { Adapter } from "next-auth/adapters";
+
+import db from "@/db";
 
 const CustomAdapter = (): Adapter => ({
   // required methods for all sign-in flows

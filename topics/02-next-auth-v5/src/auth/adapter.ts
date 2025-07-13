@@ -1,7 +1,8 @@
-import inMemoryDB from "@/db/in-memory";
-import { prisma as prismaClient } from "@/db/prisma";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { Adapter } from "next-auth/adapters";
+
+import inMemoryDB from "@/db/in-memory";
+import { prisma as prismaClient } from "@/db/prisma";
 
 const InMemoryAdapter = (): Adapter => ({
   // required methods for all sign-in flows

@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+
 import SessionData from "./session-data";
 
 async function ServerSessionData() {

@@ -1,6 +1,8 @@
 import { getServerSession } from "next-auth";
-import SessionData from "./session-data";
+
 import authOptions from "@/auth/options";
+
+import SessionData from "./session-data";
 
 async function ServerSessionData() {
   const session = await getServerSession(authOptions);

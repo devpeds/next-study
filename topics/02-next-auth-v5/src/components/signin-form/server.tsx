@@ -1,12 +1,14 @@
-import { signIn } from "@/auth";
 import { TextField } from "@shared/ui";
+import { Link } from "@shared/ui/next";
+import { redirect } from "next/navigation";
 import { AuthError } from "next-auth";
 import { ProviderId } from "next-auth/providers";
 import { CredentialInput } from "next-auth/providers/credentials";
-import { redirect } from "next/navigation";
 import { HTMLProps } from "react";
+
+import { signIn } from "@/auth";
+
 import SubmitButton from "../submit-button";
-import { Link } from "@shared/ui/next";
 
 type Props = {
   className?: string;

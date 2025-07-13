@@ -1,7 +1,8 @@
-import { signUp, SignUpError } from "@/auth";
-import SubmitButton from "@/components/submit-button";
 import { H2, TextField } from "@shared/ui";
 import { redirect } from "next/navigation";
+
+import { signUp, SignUpError } from "@/auth";
+import SubmitButton from "@/components/submit-button";
 
 const errorMessages: Record<string, string> = {
   default: "Unable to Sign up",

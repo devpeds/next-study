@@ -1,6 +1,6 @@
 import {
-  AdapterUser as OriginalAdapterUser,
   Adapter as OriginalAdapter,
+  AdapterUser as OriginalAdapterUser,
 } from "next-auth/adapters";
 
 declare module "next-auth/adapters" {
