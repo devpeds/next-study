@@ -11,7 +11,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --p tsconfig.build.json && vite build",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "peerDependencies": {
     "next": ">=15",

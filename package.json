@@ -10,6 +10,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.11.0",
   "devDependencies": {
-    "@shared/create-topic": "workspace:*"
+    "@shared/create-topic": "workspace:*",
+    "prettier": "^3.6.2"
   }
 }
