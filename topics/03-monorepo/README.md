@@ -23,7 +23,8 @@ pnpm start # run server in production mode (http://localhost:3000)
 ## Documentations
 
 1. [Workspace 도입](./docs/01-workspace.md)
-2. [린트 설정](./docs/02-lint.md)
+2. [린트 설정](./docs/02-lint-v2.md)
 3. [타입스크립트 설정](./docs/03-typescript.md)
-4. [공통 라이브러리 추가](./docs/04-shared-package.md)
-5. [자동화](./docs/05-automation.md)
+4. [Prettier 설정](./docs/04-prettier.md)
+5. [공통 라이브러리 추가](./docs/05-shared-package.md)
+6. [자동화](./docs/06-automation.md)
