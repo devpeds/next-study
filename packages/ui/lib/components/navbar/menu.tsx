@@ -20,7 +20,7 @@ function Menus({
           "max-sm:bg-background/90 max-sm:min-h-[calc(100svh-72px)]",
           open ? "max-sm:translate-x-0" : "max-sm:translate-x-full",
           "max-sm:duration-300 max-sm:ease-in-out max-sm:*:w-full",
-          className
+          className,
         )}
       >
         {children}

@@ -91,7 +91,7 @@ const inMemoryDB = (() => {
       return sessions.get(token) ?? null;
     },
     updateSession: (
-      session: Partial<AdapterSession> & Pick<AdapterSession, "sessionToken">
+      session: Partial<AdapterSession> & Pick<AdapterSession, "sessionToken">,
     ) => {
       const updated = { ...sessions.get(session.sessionToken)!, ...session };
       sessions.set(session.sessionToken, updated);
@@ -130,7 +130,7 @@ const inMemoryDB = (() => {
     updateAuthenticator: (
       authenticator: Partial<AdapterAuthenticator> & {
         credentialID: AdapterAuthenticator["credentialID"];
-      }
+      },
     ) => {
       const updated = {
         ...authenticators.get(authenticator.credentialID)!,

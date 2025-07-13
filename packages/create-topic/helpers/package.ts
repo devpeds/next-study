@@ -47,7 +47,7 @@ export class PackageJson {
     console.log("creating package.json...");
     await writeFile(
       path.resolve(this.projectDir, "package.json"),
-      JSON.stringify(this.packageJson, null, 2) + "\n"
+      JSON.stringify(this.packageJson, null, 2) + "\n",
     );
   }
 

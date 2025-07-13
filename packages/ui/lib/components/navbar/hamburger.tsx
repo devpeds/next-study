@@ -33,7 +33,7 @@ function Hamburger({ className, open = false, onClick }: HamburgerProps) {
       <svg
         className={cn(
           "*:transition-[stroke-dasharray,stroke-dashoffset]",
-          "*:duration-500 *:ease-[cubic-bezier(0.4, 0, 0.2, 1)]"
+          "*:duration-500 *:ease-[cubic-bezier(0.4, 0, 0.2, 1)]",
         )}
         viewBox="0 0 100 100"
         fill="none"

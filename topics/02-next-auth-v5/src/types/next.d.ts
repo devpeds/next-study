@@ -12,6 +12,6 @@ declare namespace globalThis {
 
   type PageProps<
     P extends PageParamsBase,
-    S extends PageSearchParamsBase
+    S extends PageSearchParamsBase,
   > = PageRouteParams<P> & PageQueryParams<S>;
 }

@@ -54,7 +54,6 @@
    | `strictPropertyInitialization` | 클래스 프로퍼티가 생성자에서 초기화 되도록 강제         |
    | `noImplicitThis`               | `this`가 암묵적으로 `any`가 되지 않도록 처리            |
    | `alwaysStrict`                 | 컴파일된 JS 파일에 `"use strict"` 추가                  |
-
    - `declaration`: 타입 선언 파일 생성 여부를 명시한다.
    - `declarationMap`: 소스맵 파일(`d.ts.map`) 생성 여부 . 소스맵 파일이 있으면 IDE에서 원본 ts 파일로 이동시킬 수 있다(ex. VSCode의 `Go to Definition` 기능).
    - `emitDeclarationOnly`: JS 파일 없이 타입 선언 파일만 생성할지 여부를 명시한다.

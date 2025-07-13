@@ -8,6 +8,6 @@ export async function createDotEnv(projectDir: string) {
   const [_, topicName] = parseTopic(projectDir);
   await writeFile(
     path.resolve(projectDir, ".env.local"),
-    `APP_TITLE=${topicName}`
+    `APP_TITLE=${topicName}`,
   );
 }

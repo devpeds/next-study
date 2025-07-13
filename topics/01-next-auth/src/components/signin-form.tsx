@@ -20,7 +20,7 @@ type CredentialsSignInFormProps = Props & {
 
 function handleSubmit(
   providerType: RedirectableProviderType,
-  callbackUrl?: string
+  callbackUrl?: string,
 ) {
   return (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

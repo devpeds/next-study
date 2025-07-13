@@ -6,7 +6,7 @@ import { TextButton } from "../button";
 type ActionButtonProps<T extends React.ElementType> = PolyMorphicProps<T>;
 
 function ActionButton<T extends React.ElementType = "button">(
-  props: ActionButtonProps<T>
+  props: ActionButtonProps<T>,
 ) {
   return (
     <TextButton
@@ -16,7 +16,7 @@ function ActionButton<T extends React.ElementType = "button">(
         "sm:justify-center sm:px-3 sm:rounded-md",
         "hover:text-blue-400 focus:text-blue-400",
         "hover:bg-blue-400/10 focus:bg-blue-400/10",
-        props.className
+        props.className,
       )}
     />
   );

@@ -16,7 +16,7 @@ const errorMessages: Record<string, string> = {
 };
 
 export default async function SignUp(
-  props: PageQueryParams<{ error?: string; callbackUrl?: string }>
+  props: PageQueryParams<{ error?: string; callbackUrl?: string }>,
 ) {
   const { error, callbackUrl } = await props.searchParams;
 

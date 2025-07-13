@@ -10,7 +10,7 @@ declare module "next-auth/adapters" {
 
   interface Adapter extends OriginalAdapter {
     createUser?(
-      user: Omit<AdapterUser, "id"> & { id?: string }
+      user: Omit<AdapterUser, "id"> & { id?: string },
     ): Awaitable<AdapterUser>;
   }
 }

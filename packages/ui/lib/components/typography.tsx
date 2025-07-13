@@ -13,7 +13,7 @@ type TypographyVariant = TypographyProps<React.ElementType>["typography"];
 
 function createTypography<T extends React.ElementType = "p">(
   typography: TypographyVariant,
-  element?: T
+  element?: T,
 ) {
   return <S extends React.ElementType = T>({
     as,

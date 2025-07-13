@@ -61,7 +61,7 @@ const topicsDirectory = path.resolve(import.meta.dirname, "../../../topics");
 function addDependencies(
   projectDir: string,
   dependencies: string[],
-  options?: { dev?: boolean; workspace?: boolean }
+  options?: { dev?: boolean; workspace?: boolean },
 ) {
   const args = [
     "add",
@@ -88,7 +88,7 @@ addDependencies(projectDir, ["@shared/eslint-config", "@shared/ts-config"], {
 async function addDependencies(
   projectDir: string,
   dependencies: string[],
-  options?: { dev?: boolean; workspace?: boolean }
+  options?: { dev?: boolean; workspace?: boolean },
 ) {
   const args = [
     "add",
@@ -139,7 +139,7 @@ async function createPackageJson(projectDir: string, topicName: string) {
   // 끝에 개행이 없으면 한 줄로 JSON이 표기됨.
   await fs.write(
     path.resolve(projectDir, "package.json"),
-    JSON.stringify(packageJson, null, 2) + "\n"
+    JSON.stringify(packageJson, null, 2) + "\n",
   );
 }
 ```

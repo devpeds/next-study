@@ -16,5 +16,5 @@
     "resolveJsonModule": false,
     "isolatedModules": true,
     "incremental": true
-  },
+  }
 }

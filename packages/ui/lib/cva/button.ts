@@ -17,7 +17,7 @@ const colors = [
 function pickClass(
   variant: ButtonVariant,
   color: ButtonColor,
-  disabled?: boolean
+  disabled?: boolean,
 ) {
   const isPrimary = color === "primary";
   const isSecondary = color === "secondary";
@@ -62,7 +62,7 @@ function pickClass(
       "text-red-700": isError,
       "border-red-700": isError,
       "hover:bg-red-700/15": !disabled && isError,
-    }
+    },
   );
 }
 
@@ -115,7 +115,7 @@ const button = cva(
       size: "medium",
       disabled: false,
     },
-  }
+  },
 );
 
 export default button;

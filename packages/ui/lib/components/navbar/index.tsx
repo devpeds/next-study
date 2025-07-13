@@ -31,7 +31,7 @@ export function NavBar({
     <nav
       className={cn(
         "flex items-center justify-between sticky top-0 left-0 z-[100]",
-        "pl-6 pr-4 py-4 bg-background/85 text-foreground backdrop-blur-md"
+        "pl-6 pr-4 py-4 bg-background/85 text-foreground backdrop-blur-md",
       )}
     >
       <Title className="text-2xl font-bold" as={LinkComponent}>
