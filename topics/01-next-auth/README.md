@@ -4,7 +4,7 @@
 
 ## Tech Stack
 
-- Node 18
+- Node 22
 - React 19
 - Next.js 15
 - NextAuth 4
