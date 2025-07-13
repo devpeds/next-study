@@ -1,7 +1,8 @@
-import SubmitButton from "@/components/submit-button";
-import db from "@/db";
 import { H2, TextField } from "@shared/ui";
 import { redirect, RedirectType } from "next/navigation";
+
+import SubmitButton from "@/components/submit-button";
+import db from "@/db";
 
 enum Errors {
   RequiredFieldMissing = "RequiredFieldMissing",
@@ -15,7 +16,7 @@ const errorMessages: Record<string, string> = {
 };
 
 export default async function SignUp(
-  props: PageQueryParams<{ error?: string; callbackUrl?: string }>
+  props: PageQueryParams<{ error?: string; callbackUrl?: string }>,
 ) {
   const { error, callbackUrl } = await props.searchParams;
 

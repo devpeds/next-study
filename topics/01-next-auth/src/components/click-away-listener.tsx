@@ -94,7 +94,7 @@ function ClickAwayListener({ children, onClickAway }: Props) {
       Object.entries(eventTypeMap).map(([_, handlerName]) => [
         handlerName,
         handleBubbledEvent(handlerName),
-      ])
+      ]),
     ),
   });
 }

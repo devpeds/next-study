@@ -1,5 +1,6 @@
-import authOptions from "@/auth/options";
 import { getServerSession } from "next-auth";
+
+import authOptions from "@/auth/options";
 
 export default async function DynamicPage() {
   const session = await getServerSession(authOptions);

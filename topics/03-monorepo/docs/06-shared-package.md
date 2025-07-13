@@ -90,14 +90,14 @@
        "@types/react": "^19.1.8",
        "@types/react-dom": "^19.1.6",
        "@vitejs/plugin-react": "^4.5.2",
-       "eslint": "^9.29.0",
+       "eslint": "^9",
        "eslint-plugin-react-refresh": "^0.4.20",
        "glob": "^11.0.3",
        "next": "^15.3.5",
        "react": "^19.1.0",
        "react-dom": "^19.1.0",
-       "tailwindcss": "^4.1.11",
-       "typescript": "~5.8.3",
+       "tailwindcss": "^4",
+       "typescript": "^5",
        "vite": "^7.0.0",
        "vite-plugin-dts": "^4.5.4",
        "vite-tsconfig-paths": "^5.1.4"
@@ -140,7 +140,6 @@
     </details>
 
 5. `src` 디렉토리는 예제 어플리케이션 코드를 추가할 예정이므로, `lib` 디렉토리를 추가한다. `lib` 디렉토리 구조는 아래와 같이 설계한다.
-
    - `index.ts`: 라이브러리의 엔트리 파일. `next` 디렉토리를 제외하고 사용처에 제공할 컴포넌트 및 유틸 모두 여기서 export 한다.
    - `styles.css`: tailwindcss 설정이 포함된 스타일시트 파일.
    - `components/`: 컴포넌트 파일들로 구성된 디렉토리. 사용처에 제공할 컴포넌트를 관리한다.

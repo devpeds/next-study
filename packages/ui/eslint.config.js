@@ -1,6 +1,6 @@
-import reactRefresh from "eslint-plugin-react-refresh";
-import { globalIgnores } from "eslint/config";
 import eslintConfig from "@shared/eslint-config/react";
+import { globalIgnores } from "eslint/config";
+import reactRefresh from "eslint-plugin-react-refresh";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [

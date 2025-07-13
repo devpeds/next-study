@@ -1,4 +1,5 @@
 import { AuthOptions } from "next-auth";
+
 import simpleAuthOptions from "./simple";
 import { databaseAuthOptions, jwtAuthOptions } from "./with-adapter";
 

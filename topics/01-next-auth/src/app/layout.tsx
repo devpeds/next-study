@@ -1,9 +1,11 @@
+import "./globals.css";
+
+import { Layout } from "@shared/ui/next";
 import type { Metadata } from "next";
 import { Nanum_Gothic, Nanum_Gothic_Coding } from "next/font/google";
-import "./globals.css";
-import Provider from "@/components/provider";
-import { Layout } from "@shared/ui/next";
+
 import AuthButton from "@/components/auth-button";
+import Provider from "@/components/provider";
 
 const nanumGothic = Nanum_Gothic({
   weight: ["400", "700"],

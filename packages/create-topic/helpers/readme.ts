@@ -1,6 +1,7 @@
 import { writeFile } from "fs/promises";
-import { PackageJson } from "./package.js";
 import path from "path";
+
+import { PackageJson } from "./package.js";
 import { parseTopic } from "./project.js";
 
 const readme = (args: {
@@ -48,7 +49,7 @@ function parseSemver(semver: string) {
 
 export async function createReadme(
   projectDir: string,
-  packageJson: PackageJson
+  packageJson: PackageJson,
 ) {
   console.log("creating README.md...");
   const [topicNumber, topicName] = parseTopic(projectDir);
@@ -58,6 +59,6 @@ export async function createReadme(
 
   await writeFile(
     path.resolve(projectDir, "README.md"),
-    readme({ topicNumber, topicName, nodeVersion, reactVersion, nextVersion })
+    readme({ topicNumber, topicName, nodeVersion, reactVersion, nextVersion }),
   );
 }

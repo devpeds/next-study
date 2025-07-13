@@ -1,0 +1,26 @@
+# dependencies
+node_modules
+
+# lock files
+pnpm-lock.yaml
+
+# testing
+coverage
+
+# next.js
+.next/
+out/
+
+# production
+build
+dist
+
+# debug
+.pnpm-debug.log*
+
+# misc
+.DS_Store
+*.pem
+
+# vscode
+.vscode

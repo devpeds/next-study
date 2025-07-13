@@ -8,23 +8,23 @@ type AsProp<T extends React.ElementType> = {
 
 type ExtendedVariantProps<
   T extends Cva,
-  K extends keyof VariantProps<T> = never
+  K extends keyof VariantProps<T> = never,
 > = [K] extends [never]
   ? VariantProps<T>
   : Omit<VariantProps<T>, K> & { [P in K]: NonNullable<VariantProps<T>[K]> };
 
 export type VariantPropsWithout<
   T extends Cva,
-  K extends keyof VariantProps<T>
+  K extends keyof VariantProps<T>,
 > = Pick<VariantProps<T>, Exclude<keyof VariantProps<T>, K>>;
 
 export type PolyMorphicProps<
   T extends React.ElementType,
-  Props = object
+  Props = object,
 > = AsProp<T> & React.ComponentPropsWithoutRef<T> & Props;
 
 export type PolyMorphicPropsWithVariants<
   T extends React.ElementType,
   U extends Cva,
-  K extends keyof VariantProps<U> = never
+  K extends keyof VariantProps<U> = never,
 > = PolyMorphicProps<T> & ExtendedVariantProps<U, K>;

@@ -1,9 +1,10 @@
+import { ActionButton, NavBar } from "@lib";
 import { H2 } from "@lib/components/typography";
-import TypographySection from "./sections/typography";
+
 import ButtonSection from "./sections/button";
 import CodeSection from "./sections/code";
 import TextFieldSection from "./sections/textfield";
-import { ActionButton, NavBar } from "@lib";
+import TypographySection from "./sections/typography";
 
 function Section({
   title,

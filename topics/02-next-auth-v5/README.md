@@ -4,7 +4,7 @@ Auth.js를 활용한 로그인 구현 샘플
 
 ## Tech Stack
 
-- Node 18
+- Node 22
 - React 19
 - Next.js 15
 - NextAuth 5 (beta)

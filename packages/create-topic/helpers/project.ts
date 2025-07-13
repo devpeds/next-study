@@ -11,9 +11,7 @@ async function getNextTopicNumber(topicsDir: string) {
 
   const topics = (
     await Promise.all(
-      (
-        await readdir(topicsDir)
-      ).map(async (topic) => {
+      (await readdir(topicsDir)).map(async (topic) => {
         const dir = path.resolve(topicsDir, topic);
         try {
           const stats = await stat(dir);
@@ -25,7 +23,7 @@ async function getNextTopicNumber(topicsDir: string) {
         } catch {
           return undefined;
         }
-      })
+      }),
     )
   ).filter((dir) => !!dir && REGEX_TOPIC_DIR.test(dir));
 
@@ -54,7 +52,7 @@ export async function createProject(topicName: string, rootDirectory: string) {
   await mkdir(projectDir);
   await appendFile(
     path.resolve(rootDirectory, "README.md"),
-    `- [${dirname}](./topics/${dirname})\n`
+    `- [${dirname}](./topics/${dirname})\n`,
   );
 
   return projectDir;

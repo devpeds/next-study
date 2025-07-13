@@ -1,5 +1,6 @@
 import { writeFile } from "fs/promises";
 import path from "path";
+
 import { spawnAsync } from "./command.js";
 
 export class PackageJson {
@@ -14,6 +15,7 @@ export class PackageJson {
         build: "next build",
         start: "next start",
         lint: "next lint",
+        format: "prettier --write .",
       },
       dependencies: {
         "@shared/ui": "workspace:*",
@@ -24,13 +26,13 @@ export class PackageJson {
       devDependencies: {
         "@shared/eslint-config": "workspace:*",
         "@shared/ts-config": "workspace:*",
-        "@tailwindcss/postcss": "^4.1.11",
-        "@types/node": "^24.0.13",
-        "@types/react": "^19.1.8",
-        "@types/react-dom": "^19.1.6",
-        eslint: "^9.30.1",
-        tailwindcss: "^4.1.11",
-        typescript: "^5.8.3",
+        "@tailwindcss/postcss": "^4",
+        "@types/node": "^22",
+        "@types/react": "^19.1.0",
+        "@types/react-dom": "^19.1.0",
+        eslint: "^9",
+        tailwindcss: "^4",
+        typescript: "^5",
       },
     };
   }
@@ -46,7 +48,7 @@ export class PackageJson {
     console.log("creating package.json...");
     await writeFile(
       path.resolve(this.projectDir, "package.json"),
-      JSON.stringify(this.packageJson, null, 2) + "\n"
+      JSON.stringify(this.packageJson, null, 2) + "\n",
     );
   }
 

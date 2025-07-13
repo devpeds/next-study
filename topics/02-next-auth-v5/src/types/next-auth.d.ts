@@ -1,6 +1,6 @@
 import {
-  AdapterUser as OriginalAdapterUser,
   Adapter as OriginalAdapter,
+  AdapterUser as OriginalAdapterUser,
 } from "next-auth/adapters";
 
 declare module "next-auth/adapters" {
@@ -10,7 +10,7 @@ declare module "next-auth/adapters" {
 
   interface Adapter extends OriginalAdapter {
     createUser?(
-      user: Omit<AdapterUser, "id"> & { id?: string }
+      user: Omit<AdapterUser, "id"> & { id?: string },
     ): Awaitable<AdapterUser>;
   }
 }

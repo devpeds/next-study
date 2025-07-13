@@ -15,7 +15,7 @@ type ButtonProps<T extends React.ElementType> = PolyMorphicPropsWithVariants<
 
 function createButton(variant: ButtonVariant) {
   return <T extends React.ElementType>(
-    props: PolyMorphicProps<T, VariantPropsWithout<typeof button, "variant">>
+    props: PolyMorphicProps<T, VariantPropsWithout<typeof button, "variant">>,
   ) => {
     return <Button {...props} variant={variant} />;
   };

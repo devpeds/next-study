@@ -2,7 +2,7 @@ import { spawn } from "child_process";
 
 export async function spawnAsync(
   command: string,
-  { args = [], cwd }: { args?: string[]; cwd: string }
+  { args = [], cwd }: { args?: string[]; cwd: string },
 ) {
   return new Promise<void>((resolve, reject) => {
     spawn(command, args, { cwd }).on("close", (code) => {

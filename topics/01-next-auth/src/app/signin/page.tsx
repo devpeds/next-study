@@ -1,10 +1,11 @@
+import { Fragment } from "react";
+
 import authOptions from "@/auth/options";
 import OAuthButton from "@/components/oauth-button";
 import {
   CredentialsSignInForm,
   EmailSignInForm,
 } from "@/components/signin-form";
-import { Fragment } from "react";
 
 type ProviderType = (typeof authOptions)["providers"][number]["type"];
 

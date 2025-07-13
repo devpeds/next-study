@@ -1,10 +1,11 @@
 import { randomUUID } from "crypto";
+import { cookies } from "next/headers";
 import NextAuth, { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import GitHub from "next-auth/providers/github";
 import Nodemailer from "next-auth/providers/nodemailer";
 import PassKey from "next-auth/providers/passkey";
-import { cookies } from "next/headers";
+
 import createAdapter from "./adapter";
 import createSignUp from "./signup";
 

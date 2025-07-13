@@ -1,3 +1,6 @@
+import { H2 } from "@shared/ui";
+import { Fragment } from "react";
+
 import { providers } from "@/auth";
 import OAuthButton from "@/components/oauth-button";
 import {
@@ -5,8 +8,6 @@ import {
   EmailSignInForm,
 } from "@/components/signin-form/server";
 import WebAuthnSignInForm from "@/components/signin-form/webauthn";
-import { H2 } from "@shared/ui";
-import { Fragment } from "react";
 
 const errorMessages: Record<string, string> = {
   default: "Unable to sign in.",

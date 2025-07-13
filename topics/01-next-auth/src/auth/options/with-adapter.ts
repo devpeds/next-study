@@ -1,10 +1,11 @@
-import { AuthOptions, SessionOptions } from "next-auth";
-import CustomAdapter from "../adapter";
-import Github from "next-auth/providers/github";
-import Credentials from "next-auth/providers/credentials";
-import { cookies } from "next/headers";
 import { randomUUID } from "crypto";
+import { cookies } from "next/headers";
+import { AuthOptions, SessionOptions } from "next-auth";
+import Credentials from "next-auth/providers/credentials";
 import Email from "next-auth/providers/email";
+import Github from "next-auth/providers/github";
+
+import CustomAdapter from "../adapter";
 
 const COOKIE_SESSION_TOKEN = "next-auth.session-token";
 

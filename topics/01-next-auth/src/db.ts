@@ -65,7 +65,7 @@ const db = (() => {
       return sessions.get(token) ?? null;
     },
     updateSession: (
-      session: Partial<AdapterSession> & Pick<AdapterSession, "sessionToken">
+      session: Partial<AdapterSession> & Pick<AdapterSession, "sessionToken">,
     ) => {
       const updated = { ...sessions.get(session.sessionToken)!, ...session };
       sessions.set(session.sessionToken, updated);

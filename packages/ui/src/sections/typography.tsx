@@ -1,4 +1,7 @@
 import {
+  Body1,
+  Body2,
+  Caption,
   H1,
   H2,
   H3,
@@ -7,9 +10,6 @@ import {
   H6,
   Subtitle1,
   Subtitle2,
-  Body1,
-  Body2,
-  Caption,
 } from "@lib/components/typography";
 
 export default function TypographySection() {

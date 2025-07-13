@@ -1,8 +1,9 @@
+import { H1, H2, Subtitle1 } from "@shared/ui";
+import { ReactNode } from "react";
+
 import AuthApiPanel from "@/components/auth-api-panel";
 import * as ClientSessionData from "@/components/session-data/client";
 import ServerSessionData from "@/components/session-data/server";
-import { H1, H2, Subtitle1 } from "@shared/ui";
-import { ReactNode } from "react";
 
 export default function Home() {
   return (
