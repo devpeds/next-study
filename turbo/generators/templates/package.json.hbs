@@ -1,0 +1,29 @@
+{
+  "name": "@topic/{{ name }}",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@shared/ui": "workspace:*",
+    "next": "^{{ nextVersion }}",
+    "react": "^{{ reactVersion }}",
+    "react-dom": "^{{ reactVersion }}"
+  },
+  "devDependencies": {
+    "@shared/eslint-config": "workspace:*",
+    "@shared/ts-config": "workspace:*",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^{{ majorVersion (nodeVersion) }}",
+    "@types/react": "^{{ reactVersion }}",
+    "@types/react-dom": "^{{ reactVersion }}",
+    "eslint": "^9",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
