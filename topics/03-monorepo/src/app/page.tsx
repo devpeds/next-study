@@ -5,7 +5,8 @@ export default function Home() {
     <>
       <H1>Hello World</H1>
       <Subtitle1 className="text-foreground">
-        This app is created by <CodeInline>@shared/ui</CodeInline>
+        This app is created by{" "}
+        <CodeInline>pnpm turbo gen create-topic</CodeInline>
       </Subtitle1>
     </>
   );

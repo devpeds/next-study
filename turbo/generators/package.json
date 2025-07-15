@@ -1,0 +1,12 @@
+{
+  "type": "commonjs",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@turbo/gen": "^2.5.4"
+  },
+  "devDependencies": {
+    "@shared/eslint-config": "workspace:*"
+  }
+}

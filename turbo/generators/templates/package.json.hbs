@@ -1,5 +1,5 @@
 {
-  "name": "@topic/next-auth",
+  "name": "@topic/{{ name }}",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,18 +11,16 @@
   },
   "dependencies": {
     "@shared/ui": "workspace:*",
-    "next": "^15.3.5",
-    "next-auth": "^4.24.11",
-    "nodemailer": "^6.8.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "next": "^{{ nextVersion }}",
+    "react": "^{{ reactVersion }}",
+    "react-dom": "^{{ reactVersion }}"
   },
   "devDependencies": {
     "@shared/eslint-config": "workspace:*",
     "@shared/ts-config": "workspace:*",
     "@tailwindcss/postcss": "^4",
-    "@types/react": "^19.1.0",
-    "@types/react-dom": "^19.1.0",
+    "@types/react": "^{{ reactVersion }}",
+    "@types/react-dom": "^{{ reactVersion }}",
     "tailwindcss": "^4"
   }
 }

@@ -3,14 +3,19 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "create-topic": "turbo gen topic",
+    "lint": "turbo lint",
+    "format": "turbo format"
   },
   "keywords": [],
   "author": "devpeds",
   "license": "ISC",
   "packageManager": "pnpm@10.11.0",
   "devDependencies": {
-    "@shared/create-topic": "workspace:*",
-    "prettier": "^3.6.2"
+    "@types/node": "^22",
+    "eslint": "^9",
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.4",
+    "typescript": "^5"
   }
 }

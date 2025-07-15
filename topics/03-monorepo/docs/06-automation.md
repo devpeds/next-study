@@ -2,6 +2,12 @@
 
 `/topics` 디렉토리에 Next.js 앱을 추가하는 커맨드라인 툴을 개발한 과정에 대한 문서다.
 
+> **NOTE**
+>
+> Turborepo를 도입하면서 [Custom generator](./07-turborepo.md#custom-generator)로 대체되었다.
+>
+> 기존 커맨드라인 툴의 소스코드는 [여기](https://github.com/devpeds/next-study/tree/topic-03/packages/create-topic)서 확인할 수 있다.
+
 ## Design
 
 `create-next-app`을 참고해 아래와 같이 설계했다.

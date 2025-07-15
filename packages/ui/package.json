@@ -37,7 +37,6 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.5.2",
-    "eslint": "^9",
     "eslint-plugin-react-refresh": "^0.4.20",
     "glob": "^11.0.3",
     "next": "^15.3.5",
@@ -45,7 +44,6 @@
     "react-dom": "^19.1.0",
     "rollup-plugin-preserve-directives": "^0.4.0",
     "tailwindcss": "^4",
-    "typescript": "^5",
     "vite": "^7.0.0",
     "vite-plugin-dts": "^4.5.4",
     "vite-tsconfig-paths": "^5.1.4"

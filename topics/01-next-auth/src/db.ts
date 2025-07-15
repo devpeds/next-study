@@ -55,6 +55,7 @@ const db = (() => {
     // accounts
     upsertAccount: (account: AdapterAccount) => {
       accounts.set(`${account.provider}_${account.providerAccountId}`, account);
+      return account;
     },
     // sessions
     createSession: (session: AdapterSession) => {

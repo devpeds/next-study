@@ -24,3 +24,6 @@ dist
 
 # vscode
 .vscode
+
+# turborepo
+.turbo
