@@ -62,7 +62,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         const topicPath = `${topicNumber}-${data["name"]}`;
         await appendFile(
           path.resolve(rootPath, "README.md"),
-          `- [${topicPath}](./topics/${topicPath})\n`,
+          `- [${topicPath}](./topics/${topicPath}/)\n`,
         );
         return `${topicPath} is appended on /README.md`;
       },

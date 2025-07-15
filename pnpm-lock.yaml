@@ -253,6 +253,40 @@ importers:
         specifier: ^4
         version: 4.1.11
 
+  topics/04-react-query:
+    dependencies:
+      '@shared/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      next:
+        specifier: ^15.3.5
+        version: 15.3.5(@babel/core@7.27.7)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react:
+        specifier: ^19.1.0
+        version: 19.1.0
+      react-dom:
+        specifier: ^19.1.0
+        version: 19.1.0(react@19.1.0)
+    devDependencies:
+      '@shared/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config
+      '@shared/ts-config':
+        specifier: workspace:*
+        version: link:../../packages/ts-config
+      '@tailwindcss/postcss':
+        specifier: ^4
+        version: 4.1.11
+      '@types/react':
+        specifier: ^19.1.0
+        version: 19.1.8
+      '@types/react-dom':
+        specifier: ^19.1.0
+        version: 19.1.6(@types/react@19.1.8)
+      tailwindcss:
+        specifier: ^4
+        version: 4.1.11
+
 packages:
 
   '@alloc/quick-lru@5.2.0':
