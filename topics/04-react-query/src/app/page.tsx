@@ -1,12 +1,22 @@
-import { CodeInline, H1, Subtitle1 } from "@shared/ui";
+import { Body1, Button, H1 } from "@shared/ui";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <>
-      <H1>Hello World</H1>
-      <Subtitle1 className="text-foreground">
-        This app is created by <CodeInline>pnpm turbo gen create-topic</CodeInline>
-      </Subtitle1>
-    </>
+    <main className="flex flex-col gap-4">
+      <H1>Next.js 데이터 관리: 서버 vs. 클라이언트</H1>
+      <Body1>
+        이 프로젝트는 Next.js의 서버 컴포넌트 및 서버 액션과 React Query를
+        사용한 데이터 관리 방식의 차이점을 비교하기 위해 만들어졌습니다.
+      </Body1>
+      <div className="flex gap-4">
+        <Link href="/server">
+          <Button>서버 컴포넌트 예제</Button>
+        </Link>
+        <Link href="/react-query">
+          <Button>React Query 예제</Button>
+        </Link>
+      </div>
+    </main>
   );
 }
