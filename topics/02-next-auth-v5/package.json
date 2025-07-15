@@ -27,12 +27,9 @@
     "@shared/eslint-config": "workspace:*",
     "@shared/ts-config": "workspace:*",
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^22",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
-    "eslint": "^9",
     "prisma": "^6.10.1",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "tailwindcss": "^4"
   }
 }

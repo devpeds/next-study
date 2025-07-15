@@ -3,14 +3,19 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "create-topic": "turbo gen topic"
+    "create-topic": "turbo gen topic",
+    "lint": "turbo lint",
+    "format": "turbo format"
   },
   "keywords": [],
   "author": "devpeds",
   "license": "ISC",
   "packageManager": "pnpm@10.11.0",
   "devDependencies": {
+    "@types/node": "^22",
+    "eslint": "^9",
     "prettier": "^3.6.2",
-    "turbo": "^2.5.4"
+    "turbo": "^2.5.4",
+    "typescript": "^5"
   }
 }

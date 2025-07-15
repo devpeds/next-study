@@ -1,19 +1,19 @@
-import path from "path";
 import { PlopTypes } from "@turbo/gen";
-import { isKebabCase } from "./helpers/string";
-import { getTopicNumber } from "./helpers/topic";
+import { appendFile } from "fs/promises";
+import path from "path";
+
+import { spawnAsync } from "./helpers/command";
 import {
   majorVersion,
   nextVersion,
   nodeVersion,
   reactVersion,
 } from "./helpers/semver";
-import { spawnAsync } from "./helpers/command";
-import { appendFile } from "fs/promises";
+import { isKebabCase } from "./helpers/string";
+import { getTopicNumber } from "./helpers/topic";
 
 export default function generator(plop: PlopTypes.NodePlopAPI): void {
   const rootPath = plop.getDestBasePath();
-
   const topicNumber = getTopicNumber(path.resolve(rootPath, "topics"));
 
   plop.setHelper("topicNumber", () => topicNumber);
@@ -48,7 +48,6 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         type: "addMany",
         destination:
           "{{ turbo.paths.root }}/topics/{{ topicNumber }}-{{ name }}",
-        base: "templates",
         templateFiles: "templates/**/*",
       },
       async (data) => {

@@ -1,6 +1,7 @@
-import path from "path";
-import { isTopicPathName } from "./string";
 import { readdirSync, statSync } from "fs";
+import path from "path";
+
+import { isTopicPathName } from "./string";
 
 export function getTopicNumber(topicsDir: string) {
   const topics = readdirSync(topicsDir).map((topic) => {
