@@ -61,6 +61,12 @@ importers:
         specifier: ^16.3.0
         version: 16.3.0
 
+  packages/tailwind-config:
+    devDependencies:
+      tailwindcss:
+        specifier: ^4
+        version: 4.1.11
+
   packages/ts-config: {}
 
   packages/ui:
@@ -78,6 +84,9 @@ importers:
       '@shared/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
+      '@shared/tailwind-config':
+        specifier: workspace:*
+        version: link:../tailwind-config
       '@shared/ts-config':
         specifier: workspace:*
         version: link:../ts-config
@@ -237,6 +246,9 @@ importers:
       '@shared/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
+      '@shared/tailwind-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwind-config
       '@shared/ts-config':
         specifier: workspace:*
         version: link:../../packages/ts-config
@@ -274,6 +286,9 @@ importers:
       '@shared/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
+      '@shared/tailwind-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwind-config
       '@shared/ts-config':
         specifier: workspace:*
         version: link:../../packages/ts-config

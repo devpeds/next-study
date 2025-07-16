@@ -19,7 +19,9 @@ export default function CreatePostForm({
       action={action}
       onSubmit={onSubmit}
     >
-      <div className="flex flex-col max-w-sm m-auto">{children}</div>
+      <div className="flex flex-col max-w-sm m-auto bg-background">
+        {children}
+      </div>
     </form>
   );
 }
