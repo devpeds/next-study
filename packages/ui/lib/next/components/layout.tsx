@@ -22,7 +22,7 @@ export function Layout({
     <body className={`${sansVariable} ${monoVariable} antialiased`}>
       <div className="relative flex flex-col min-h-screen font-sans">
         <NavBar {...navBarProps} LinkComponent={Link} />
-        <main className="flex-1 flex flex-col p-8">{children}</main>
+        <div className="flex-1 flex flex-col p-8">{children}</div>
       </div>
     </body>
   );
