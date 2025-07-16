@@ -6,7 +6,8 @@ import type {
   VariantPropsWithout,
 } from "@lib/types";
 import { cn } from "@lib/utils";
-import { createElement } from "react";
+
+import { ButtonBase } from "./button-base";
 
 type ButtonProps<T extends React.ElementType> = PolyMorphicPropsWithVariants<
   T,
@@ -34,13 +35,16 @@ export function Button<T extends React.ElementType = "button">({
   disabled,
   ...props
 }: ButtonProps<T>) {
-  const component = as || "button";
-  const canDisabledInjected =
-    typeof component !== "string" || ["button", "input"].includes(component);
-
-  return createElement(component, {
-    className: cn(button({ variant, size, color, disabled }), className),
-    ...(canDisabledInjected ? { disabled } : {}),
-    ...props,
-  });
+  return (
+    <ButtonBase
+      as={as || "button"}
+      className={cn(
+        button({ variant, size, color, disabled }),
+        "min-w-[64px]",
+        className,
+      )}
+      disabled={disabled}
+      {...props}
+    />
+  );
 }

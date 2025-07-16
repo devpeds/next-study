@@ -3,6 +3,7 @@ import { H2 } from "@lib/components/typography";
 
 import ButtonSection from "./sections/button";
 import CodeSection from "./sections/code";
+import FabSection from "./sections/fab";
 import TextFieldSection from "./sections/textfield";
 import TypographySection from "./sections/typography";
 
@@ -39,6 +40,9 @@ function App() {
         </Section>
         <Section title="Button">
           <ButtonSection />
+        </Section>
+        <Section title="Fab">
+          <FabSection />
         </Section>
         <Section title="Code">
           <CodeSection />
