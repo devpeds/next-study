@@ -23,7 +23,7 @@ export default async function ServerPage({
           <Body1>데이터 추가/삭제를 서버 액션으로 처리합니다.</Body1>
         </div>
         <Link
-          href={`/lab-1/server?sort=${sort === "asc" ? "desc" : "asc"}`}
+          href={`/experiment-1/server?sort=${sort === "asc" ? "desc" : "asc"}`}
           replace
         >
           <Button>정렬</Button>

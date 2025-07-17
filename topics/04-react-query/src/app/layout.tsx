@@ -25,8 +25,8 @@ export const metadata: Metadata = {
 };
 
 const links = [
-  { name: "Lab 1", href: "/lab-1" },
-  { name: "Lab 2", href: "/lab-2" },
+  { name: "Experiment 1", href: "/experiment-1" },
+  { name: "Experiment 2", href: "/experiment-2" },
 ];
 
 export default function RootLayout({
