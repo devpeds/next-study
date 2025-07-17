@@ -6,7 +6,7 @@ import { createPost, deletePost } from "@/api";
 
 export async function actionCreate() {
   await createPost();
-  revalidatePath("/server");
+  revalidatePath("/experiment-1/server");
 }
 
 export async function actionDelete(formData: FormData) {
@@ -16,5 +16,5 @@ export async function actionDelete(formData: FormData) {
   }
 
   await deletePost(id as string);
-  revalidatePath("/server");
+  revalidatePath("/experiment-1/server");
 }

@@ -3,13 +3,13 @@
 import { Body1, Button, H1 } from "@shared/ui";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { FormEvent } from "react";
+import { FormEvent, Suspense } from "react";
 
 import { createPost, deletePost, getPosts } from "@/api";
 import CreatePostForm from "@/components/create-post-form";
 import PostList from "@/components/post-list";
 
-export default function ReactQueryPage() {
+function ReactQueryPageClient() {
   const queryClient = useQueryClient();
   const router = useRouter();
   const pathname = usePathname();
@@ -79,5 +79,13 @@ export default function ReactQueryPage() {
         </Button>
       </CreatePostForm>
     </main>
+  );
+}
+
+export default function ReactQueryPage() {
+  return (
+    <Suspense>
+      <ReactQueryPageClient />
+    </Suspense>
   );
 }

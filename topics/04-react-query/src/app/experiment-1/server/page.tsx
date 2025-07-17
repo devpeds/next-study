@@ -10,9 +10,9 @@ import { actionCreate, actionDelete } from "./actions";
 export default async function ServerPage({
   searchParams,
 }: {
-  searchParams: { sort?: "asc" | "desc" };
+  searchParams: Promise<{ sort?: "asc" | "desc" }>;
 }) {
-  const sort = searchParams.sort || "asc";
+  const sort = (await searchParams).sort || "asc";
   const posts = await getPosts(20, sort);
 
   return (
