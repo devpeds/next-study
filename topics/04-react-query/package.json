@@ -21,6 +21,7 @@
     "@shared/tailwind-config": "workspace:*",
     "@shared/ts-config": "workspace:*",
     "@tailwindcss/postcss": "^4",
+    "@tanstack/react-query-devtools": "^5.83.0",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "tailwindcss": "^4"

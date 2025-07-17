@@ -1,6 +1,7 @@
 import "./globals.css";
 
 import { Layout } from "@shared/ui/next";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { Metadata } from "next";
 import { Nanum_Gothic, Nanum_Gothic_Coding } from "next/font/google";
 
@@ -24,8 +25,8 @@ export const metadata: Metadata = {
 };
 
 const links = [
-  { name: "Server", href: "/server" },
-  { name: "React Query", href: "/react-query" },
+  { name: "Lab 1", href: "/lab-1" },
+  { name: "Lab 2", href: "/lab-2" },
 ];
 
 export default function RootLayout({
@@ -43,6 +44,7 @@ export default function RootLayout({
           links={links}
         >
           {children}
+          <ReactQueryDevtools />
         </Layout>
       </Providers>
     </html>

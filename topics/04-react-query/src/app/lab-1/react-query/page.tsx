@@ -2,6 +2,7 @@
 
 import { Body1, Button, H1 } from "@shared/ui";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { FormEvent } from "react";
 
 import { createPost, deletePost, getPosts } from "@/api";
@@ -10,14 +11,18 @@ import PostList from "@/components/post-list";
 
 export default function ReactQueryPage() {
   const queryClient = useQueryClient();
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const sort = searchParams.get("sort") === "desc" ? "desc" : "asc";
 
   const {
     data: posts,
     isLoading,
     isError,
   } = useQuery<Post[]>({
-    queryKey: ["posts"],
-    queryFn: () => getPosts(),
+    queryKey: ["posts", sort],
+    queryFn: () => getPosts(20, sort),
   });
 
   const createMutation = useMutation({
@@ -39,11 +44,18 @@ export default function ReactQueryPage() {
     createMutation.mutate();
   };
 
+  const handleSort = () => {
+    router.replace(`${pathname}?sort=${sort === "asc" ? "desc" : "asc"}`);
+  };
+
   return (
     <main className="flex flex-col gap-8 relative">
-      <div>
-        <H1>React Query</H1>
-        <Body1>데이터 추가/삭제를 `useMutation`으로 처리합니다.</Body1>
+      <div className="flex justify-between items-center">
+        <div>
+          <H1>React Query</H1>
+          <Body1>데이터 추가/삭제를 `useMutation`으로 처리합니다.</Body1>
+        </div>
+        <Button onClick={handleSort}>정렬</Button>
       </div>
 
       <PostList

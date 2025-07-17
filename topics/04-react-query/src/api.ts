@@ -1,10 +1,10 @@
 const BASE_URL = "http://localhost:3000";
 
 export async function getPosts(
-  page: number = 0,
   size: number = 20,
+  sort: "asc" | "desc" = "asc",
 ): Promise<Post[]> {
-  const res = await fetch(`${BASE_URL}/api/posts?page=${page}&size=${size}`, {
+  const res = await fetch(`${BASE_URL}/api/posts?size=${size}&sort=${sort}`, {
     cache: "no-store",
   });
   if (!res.ok) {

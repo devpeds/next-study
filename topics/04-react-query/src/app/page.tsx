@@ -9,12 +9,12 @@ export default function Home() {
         이 프로젝트는 Next.js의 서버 컴포넌트 및 서버 액션과 React Query를
         사용한 데이터 관리 방식의 차이점을 비교하기 위해 만들어졌습니다.
       </Body1>
-      <div className="flex gap-4">
-        <Link href="/server">
-          <Button>서버 컴포넌트 예제</Button>
+      <div className="flex flex-wrap gap-4">
+        <Link href="/lab-1">
+          <Button>Lab 1: Sort & Mutation</Button>
         </Link>
-        <Link href="/react-query">
-          <Button>React Query 예제</Button>
+        <Link href="/lab-2">
+          <Button>Lab 2: Long Post List</Button>
         </Link>
       </div>
     </main>

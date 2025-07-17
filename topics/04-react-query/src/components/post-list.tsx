@@ -4,7 +4,7 @@ interface PostListProps {
   posts: Post[] | undefined;
   isLoading?: boolean;
   isError?: boolean;
-  DeleteButton: (props: { post: Post }) => React.ReactElement;
+  DeleteButton?: (props: { post: Post }) => React.ReactElement;
 }
 
 export default function PostList({
@@ -26,7 +26,7 @@ export default function PostList({
               <H3>{post.title}</H3>
               <Body1>{post.content}</Body1>
             </div>
-            {<DeleteButton post={post} />}
+            {DeleteButton?.({ post })}
           </div>
         ))}
         {isLoading && <Body1>Loading...</Body1>}

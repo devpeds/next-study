@@ -29,10 +29,11 @@ function safeNumber(value: unknown) {
 // 모든 게시물 조회
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const page = safeNumber(searchParams.get("page"));
   const size = safeNumber(searchParams.get("size")) || 20;
+  const sort = searchParams.get("sort");
+  const sortedPost = sort === "desc" ? [...posts].reverse() : posts;
 
-  return Response.json(posts.slice(page * size, (page + 1) * size));
+  return Response.json(sortedPost.slice(0, size));
 }
 
 // 새 게시물 추가
