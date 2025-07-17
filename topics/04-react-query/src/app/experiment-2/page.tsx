@@ -4,7 +4,7 @@ import { LinkButton } from "@shared/ui/next";
 export default function Home() {
   return (
     <main className="flex flex-col gap-4">
-      <H1>Lab 2: Long Post List</H1>
+      <H1>Experiment 2: Long Post List</H1>
       <Body1>
         이 실습에서는 긴 게시물 목록을 로딩할 때 Next.js의 서버 컴포넌트,
         Suspense, 그리고 React Query의 Hydration 전략이 성능에 미치는 영향을
@@ -20,24 +20,24 @@ export default function Home() {
       </div>
 
       <div className="flex flex-wrap gap-4 mt-4">
-        <LinkButton href="/lab-2/server" variant="filled" color="primary">
+        <LinkButton href="/experiment-2/server" variant="filled" color="primary">
           서버 컴포넌트 (No Suspense)
         </LinkButton>
         <LinkButton
-          href="/lab-2/server-suspense"
+          href="/experiment-2/server-suspense"
           variant="filled"
           color="primary"
         >
           서버 컴포넌트 (Suspense)
         </LinkButton>
-        <LinkButton href="/lab-2/server-edge" variant="filled" color="primary">
+        <LinkButton href="/experiment-2/server-edge" variant="filled" color="primary">
           서버 컴포넌트 (Edge)
         </LinkButton>
-        <LinkButton href="/lab-2/react-query" variant="filled" color="primary">
+        <LinkButton href="/experiment-2/react-query" variant="filled" color="primary">
           React Query (No Hydration)
         </LinkButton>
         <LinkButton
-          href="/lab-2/react-query-hydration"
+          href="/experiment-2/react-query-hydration"
           variant="filled"
           color="primary"
         >

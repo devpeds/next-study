@@ -26,10 +26,10 @@ export default function Home() {
       </div>
 
       <div className="flex flex-warp gap-4 mt-4">
-        <LinkButton href="/lab-1/server" variant="filled" color="primary">
+        <LinkButton href="/experiment-1/server" variant="filled" color="primary">
           서버 컴포넌트 예제
         </LinkButton>
-        <LinkButton href="/lab-1/react-query" variant="filled" color="primary">
+        <LinkButton href="/experiment-1/react-query" variant="filled" color="primary">
           React Query 예제
         </LinkButton>
       </div>
