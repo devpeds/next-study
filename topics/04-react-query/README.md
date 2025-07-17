@@ -46,10 +46,5 @@ pnpm start # run server in production mode (http://localhost:3000)
 
 ## Experiments
 
-### Experiment 1. Sort & Mutation
-
-TBD
-
-### Experiment 2: Long Post List
-
-TBD
+1. **[Sort & Mutation](./docs/experiment-01.md)**
+2. **[Long Post List](./docs/experiment-02.md)**
