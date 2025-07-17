@@ -1,4 +1,4 @@
-import { Body1, H1, H2 } from "@shared/ui";
+import { Body1, CodeInline, H1, H2 } from "@shared/ui";
 import { LinkButton } from "@shared/ui/next";
 
 export default function Home() {
@@ -6,9 +6,12 @@ export default function Home() {
     <main className="flex flex-col gap-4">
       <H1>Sort & Mutation</H1>
       <Body1>
-        이 실습에서는 Next.js의 서버 컴포넌트 및 서버 액션과 React Query를
-        사용한 데이터 관리 방식의 차이점을 비교합니다. 아래 두 페이지는 동일한
-        기능을 각기 다른 방식으로 구현했습니다.
+        이 실습은 <strong>데이터 정렬 및 변경(Mutation)</strong> 시나리오에
+        중점을 둡니다. Next.js 서버 액션과 React Query(
+        <CodeInline>useMutation</CodeInline>
+        )를 사용하는 방식의 구현 차이, 장단점을 비교합니다. 두 페이지는 동일한
+        기능을 제공하지만, 상태 관리 및 서버 통신 방식에서 근본적인 차이가
+        있습니다.
       </Body1>
 
       <div className="mt-4 p-4 border rounded-lg">
