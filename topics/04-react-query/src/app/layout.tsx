@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { Metadata } from "next";
 import { Nanum_Gothic, Nanum_Gothic_Coding } from "next/font/google";
 
+import NavigationTimer from "@/components/navigation-timer";
 import Providers from "@/components/providers";
 
 const nanumGothic = Nanum_Gothic({
@@ -36,6 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <NavigationTimer />
       <Providers>
         <Layout
           title="react-query"

@@ -33,7 +33,7 @@ RSC를 통해 서버 사이드에서 데이터를 받아 목록을 그려 클라
 | :-------------------------: | :---------: | :------------: |
 |          Document           |   18.2KB    |     7.2KB      |
 | JS files<br/>(Total/Unique) | 134KB/4.7KB |  141KB/9.5KB   |
-|          API call           |     0KB     |      10KB      |
+|          API call           |     --      |      10KB      |
 
 주소창에 URL을 입력해 사이트에 접속했을 때 발생하는 응답 사이즈를 정리한 테이블이다. html 파일(`Document`)의 경우, 서버에서 모든 컨텐츠를 생성하는 `/server` 페이지가 클라이언트에서 리스트를 렌더링하는 `/react-query` 페이지보다 약 2.5배 크다.
 
@@ -163,3 +163,5 @@ sequenceDiagram
   B ->> A: JSON
   A ->> A: Render
 ```
+
+두 페이지 간 응답 시간을 비교해보면, `/server` 페이지는 평균 약 20ms, `/react-query` 페이지는 평균 8~11ms 소요된다. `/react-query` 페이지는 **Optimistic Update**를 도입해 리스트를 다시 받기 전에 UI를 먼저 업데이트 할 수 있으므로, 데이터 변경이 빈번한 페이지라면 React Query 기반의 Client Fetching 방식 도입을 긍정적으로 고려할 수 있다.

@@ -1,16 +1,13 @@
 import { H1 } from "@shared/ui";
-import {
-  dehydrate,
-  HydrationBoundary,
-  QueryClient,
-} from "@tanstack/react-query";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
 import { getPosts } from "@/api";
+import { getQueryClient } from "@/react-query/client";
 
 import { HydratedPostList } from "./client";
 
 export default async function ReactQueryHydrationPage() {
-  const queryClient = new QueryClient();
+  const queryClient = getQueryClient();
 
   await queryClient.prefetchQuery({
     queryKey: ["posts", 10000],
