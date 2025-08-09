@@ -19,10 +19,12 @@ export function Layout({
   ...navBarProps
 }: LayoutProps) {
   return (
-    <body className={`${sansVariable} ${monoVariable} antialiased`}>
+    <body
+      className={`${sansVariable} ${monoVariable} antialiased overflow-x-hidden`}
+    >
       <div className="relative flex flex-col min-h-screen font-sans">
         <NavBar {...navBarProps} LinkComponent={Link} />
-        <main className="flex-1 flex flex-col p-8">{children}</main>
+        <div className="flex-1 flex flex-col p-8">{children}</div>
       </div>
     </body>
   );

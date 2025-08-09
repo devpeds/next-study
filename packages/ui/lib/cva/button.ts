@@ -66,56 +66,53 @@ function pickClass(
   );
 }
 
-const button = cva(
-  "cursor-pointer flex items-center justify-center min-w-[64px] font-medium",
-  {
-    variants: {
-      variant: {
-        filled: null,
-        outlined: "outline-1",
-        text: null,
-      },
-      size: {
-        large: "text-lg rounded-lg px-5 py-3",
-        medium: "text-base rounded-md px-3 py-2",
-        small: "text-sm rounded-sm px-2 py-1",
-      },
-      color: {
-        primary: null,
-        secondary: null,
-        success: null,
-        info: null,
-        warn: null,
-        error: null,
-      },
-      disabled: {
-        true: "cursor-not-allowed",
-        false: null,
-      },
+const button = cva("", {
+  variants: {
+    variant: {
+      filled: null,
+      outlined: "outline-1",
+      text: null,
     },
-    compoundVariants: [
-      ...variants.flatMap((variant) => [
-        ...colors.map((color) => ({
-          variant,
-          color,
-          disabled: false,
-          class: pickClass(variant, color),
-        })),
-        ...colors.map((color) => ({
-          variant,
-          color,
-          disabled: true,
-          class: pickClass(variant, color, true),
-        })),
-      ]),
-    ],
-    defaultVariants: {
-      variant: "filled",
-      color: "primary",
-      size: "medium",
-      disabled: false,
+    size: {
+      large: "text-lg rounded-lg px-5 py-3",
+      medium: "text-base rounded-md px-3 py-2",
+      small: "text-sm rounded-sm px-2 py-1",
+    },
+    color: {
+      primary: null,
+      secondary: null,
+      success: null,
+      info: null,
+      warn: null,
+      error: null,
+    },
+    disabled: {
+      true: "cursor-not-allowed",
+      false: null,
     },
   },
-);
+  compoundVariants: [
+    ...variants.flatMap((variant) => [
+      ...colors.map((color) => ({
+        variant,
+        color,
+        disabled: false,
+        class: pickClass(variant, color),
+      })),
+      ...colors.map((color) => ({
+        variant,
+        color,
+        disabled: true,
+        class: pickClass(variant, color, true),
+      })),
+    ]),
+  ],
+  defaultVariants: {
+    variant: "filled",
+    color: "primary",
+    size: "medium",
+    disabled: false,
+  },
+});
 
 export default button;
