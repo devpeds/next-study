@@ -21,3 +21,4 @@ pnpm create-topic
 - [02-next-auth-v5](./topics/02-next-auth-v5/)
 - [03-monorepo](./topics/03-monorepo/)
 - [04-react-query](./topics/04-react-query/)
+- [05-isr](./topics/05-isr/)
