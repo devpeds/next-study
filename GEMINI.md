@@ -44,3 +44,7 @@ This is a monorepo for studying and experimenting with Next.js and related techn
 - **Linting:** Adhere to the rules defined in `eslint.config.[m]js` and the shared `eslint-config` packages. Run `pnpm lint` to check for issues.
 - **Formatting:** Use Prettier for consistent code formatting. The configuration is in `prettier.config.js`. Run `pnpm format` to format the codebase.
 - **Commits:** Follow conventional commit standards if applicable (check `git log`).
+
+## Extra Instruction
+
+- When you fail the execution, let me know what you fail and wait for the next execution until I request.
