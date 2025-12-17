@@ -18,7 +18,7 @@ Streaming SSR 적용 여부를 비교하기 위해 `/server` 페이지와 `/serv
 
 ### 첫 페이지 로드 (URL Navigation)
 
-|            Requests             |  `/server`  | `/server-ssr` | `/server-edge` | `/react-query` | `/react-query-hydration` |
+|            Requests             |  `/server`  | `/server-suspense` | `/server-edge` | `/react-query` | `/react-query-hydration` |
 | :-----------------------------: | :---------: | :-----------: | :------------: | :------------: | :----------------------: |
 |     Document - Transferred      |    151KB    |     151KB     |     13.6MB     |     7.3KB      |          134KB           |
 |       Document - Resource       |   13.6MB    |    13.6MB     |     13.6MB     |     56.5KB     |          11.0MB          |
@@ -30,7 +30,7 @@ Streaming SSR 적용 여부를 비교하기 위해 `/server` 페이지와 `/serv
 
 `/server-edge` 페이지는 `/server`, `/server-ssr` 페이지와 달리 실제 리소스와 동일한 크기로 응답이 내려온다. 이는 Node.js 런타임에서 동작하는 두 페이지와 달리, 응답에 대한 압축을 런타임이 아닌 에지 서버에서 담당한다. 로컬 환경에서 edge 런타임을 실행할 경우 압축을 담당하는 부분이 빠지게 되므로 압축 없이 응답이 내려온다.
 
-|       Timing       | `/server` | `/server-ssr` | `/server-edge` | `/react-query` | `/react-query-hydration` |
+|       Timing       | `/server` | `/server-suspense` | `/server-edge` | `/react-query` | `/react-query-hydration` |
 | :----------------: | :-------: | :-----------: | :------------: | :------------: | :----------------------: |
 | Queue ~ Connection |  ~2.5ms   |    ~2.5ms     |     ~2.5ms     |     ~2.5ms     |          ~2.5ms          |
 |      Waiting       |   380ms   |     20ms      |      20ms      |     3.40ms     |          210ms           |
@@ -42,7 +42,7 @@ Streaming SSR 적용 여부를 비교하기 위해 `/server` 페이지와 `/serv
 
 ### Link Navigation from `/experiment-2`
 
-|         Requests          | `/server` | `/server-ssr` | `/server-edge` | `/react-query` | `/react-query-hydration` |
+|         Requests          | `/server` | `/server-suspense` | `/server-edge` | `/react-query` | `/react-query-hydration` |
 | :-----------------------: | :-------: | :-----------: | :------------: | :------------: | :----------------------: |
 | RSC Payload - Transferred |  84.5KB   |    84.6KB     |     7.35MB     |     4.8KB      |          68.5KB          |
 |  RSC Payload - Resource   |  7.35MB   |    7.35MB     |     7.35MB     |     25.8KB     |          4.19MB          |
@@ -55,7 +55,7 @@ Streaming SSR 적용 여부를 비교하기 위해 `/server` 페이지와 `/serv
 |                    Pages |       Navigation Time       |
 | -----------------------: | :-------------------------: |
 |                `/server` |            870ms            |
-|            `/server-ssr` |            100ms            |
+|       `/server-suspense` |            100ms            |
 |           `/server-edge` |            30ms             |
 |           `/react-query` | 21ms(first)/630ms(re-visit) |
 | `/react-query-hydration` |            750ms            |
@@ -66,7 +66,7 @@ Streaming SSR 적용 여부를 비교하기 위해 `/server` 페이지와 `/serv
 
 ### Lighthouse
 
-|   Metrics   | `/server` | `/server-ssr` | `/server-edge` | `/react-query` | `/react-query-hydration` |
+|   Metrics   | `/server` | `/server-suspense` | `/server-edge` | `/react-query` | `/react-query-hydration` |
 | :---------: | :-------: | :-----------: | :------------: | :------------: | :----------------------: |
 |     FCP     |   0.6s    |     0.4s      |     11.2s      |      0.3s      |           0.6s           |
 |     LCP     |   3.3s    |     4.0s      |     14.8s      |      7.2s      |           3.8s           |
